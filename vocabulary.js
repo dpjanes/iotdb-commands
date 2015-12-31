@@ -33,14 +33,86 @@ var logger = iotdb.logger({
 var fs = require('fs');
 var path = require('path');
 
+var stemmer = require('porter-stemmer').stemmer;
 var yaml = require('js-yaml');
+
+var _normalize = function(v) {
+    if (v.match(/^:/)) {
+        return "iot-purpose" + v;
+    } else {
+        return v;
+    }
+};
+
+var _stem = function(s) {
+    return stemmer(s.toLowerCase());
+};
+
+var actiondsd = {};
+var thingdsd = {};
 
 /**
  *  This is called by '_load_vocab' many times. 
  *  It will deal  with one vocabulary dictionary
  */
 var _process_vocab = function(d) {
+    if (d["action"]) {
+        _process_action(d);
+    } else if (d["thing"]) {
+        _process_thing(d);
+    } else {
+        logger.error({
+            method: "_process_vocab",
+            d: d,
+            cause: "likely problem with YAML source file",
+        }, "expected thing|action");
+        return;
+    }
 };
+
+var _process_action = function(d) {
+    if (d["actuator"]) {
+        d["iot:purpose"] = _normalize(d["actuator"]);
+        d["iot:actuator"] = true;
+    } else if (d["sensor"]) {
+        d["iot:purpose"] = _normalize(d["sensor"]);
+        d["iot:sensor"] = true;
+        _process_sensor(d);
+    } else {
+        logger.error({
+            method: "_process_vocab",
+            d: d,
+            cause: "likely problem with YAML source file",
+        }, "expected acutator|sensor");
+        return;
+    }
+
+    d = _.ld.compact(d);
+
+    var action = d["action"];
+    var actionds = actiondsd[action];
+    if (actionds === undefined) {
+        actionds = [];
+        actiondsd[action] = actionds;
+    }
+
+    actionds.push(d);
+};
+
+var _process_thing = function(d) {
+    d = _.ld.compact(d);
+
+    var thing = _stem(d["thing"]);
+    var thingds = thingdsd[thing];
+    if (thingds === undefined) {
+        thingds = [];
+        thingdsd[thing] = thingds;
+    }
+
+    thingds.push(d);
+}
+
+var loaded = false;
 
 /**
  *  This will load all the vocabulary YAML files
@@ -48,6 +120,11 @@ var _process_vocab = function(d) {
  *  call multiple times
  */
 var _load_vocabulary = function() {
+    if (loaded) {
+        return;
+    }
+    loaded = true;
+
     var vocab_root = path.join(__dirname, "vocabulary");
 
     var vocab_files = fs.readdirSync(vocab_root);
@@ -73,10 +150,40 @@ var _load_vocabulary = function() {
                 return;
             }
 
-            console.log(d);
+            d["@src"] = vocab_path;
+            _process_vocab(d);
         })
     });
 
 };
 
-_load_vocabulary();
+var thing = function(name) {
+    _load_vocabulary();
+
+    var name = _stem(name);
+    var thingds = thingdsd[name];
+    if (thingds === undefined) {
+        return [];
+    } else {
+        return thingds;
+    }
+};
+
+var action = function(name) {
+    _load_vocabulary();
+
+    var nameds = namedsd[name];
+    if (nameds === undefined) {
+        return [];
+    } else {
+        return nameds;
+    }
+};
+
+/**
+ *  API
+ */
+exports.thing = thing;
+exports.action = action;
+
+console.log(thing("Light"));
