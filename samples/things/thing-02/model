@@ -1,0 +1,12 @@
+{
+    "iot:attribute": [
+        {
+            "@id": "#t",
+            "iot:purpose": "iot-purpose:sensor.temperature",
+            "iot:read": true,
+            "iot:role": "iot-purpose:role-reading",
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+        }
+    ]
+}
