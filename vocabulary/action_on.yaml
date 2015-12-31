@@ -1,0 +1,14 @@
+---
+action: "turn on"
+actuator: ":on"
+value: true
+---
+action: "turn on"
+actuator: ":on.true"
+---
+action: "turn off"
+actuator: ":on"
+value: false
+---
+action: "turn off"
+actuator: ":on.false"
