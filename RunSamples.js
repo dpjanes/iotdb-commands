@@ -25,6 +25,10 @@
 
 var iotdb = require('iotdb');
 var _ = iotdb._;
+var logger = iotdb.logger({
+    name: "iotdb-commands",
+    module: "RunSamples",
+});
 
 var FSTransport = require('iotdb-transport-fs').Transport;
 
@@ -32,6 +36,8 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var minimist = require('minimist');
+
+var vocabulary = require('./vocabulary');
 
 var ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all"],
@@ -84,13 +90,44 @@ var metas = function(contextd, callback) {
 
 var run_one = function (contextd, done) {
     var json = require("./" + contextd.json_path);
-    console.log("PATH", contextd.json_path);
+    console.log("PATH", contextd.json_path, json);
+
+    var tds = vocabulary.things(json.thing);
+    var ads = vocabulary.actions(json.action);
+
+    var meta_ors = [];
+    tds.map(function(td) {
+        var meta_ands = [];
+        var facets = _.ld.list(td, "facet", []);
+        meta_ands.push("meta:facet & " + JSON.stringify(facets));
+
+        _.mapObject(td, function(value, key) {
+            if (key.indexOf(':') === -1) {
+                return;
+            }
+
+            meta_ands.push(key + " = " + JSON.stringify(value));
+        });
+
+        meta_ors.push("( " + meta_ands.join(" AND ") + " )");
+    });
+
+    logger.info({
+        json: json,
+        things: tds,
+        actions: ads,
+        path: contextd.json_path, 
+        meta_ors: meta_ors,
+    });
+
+    /*
     metas(contextd, function(error, metad) {
         if (metad === null) {
             return done(null, null);
         }
         console.log("META", json, metad);
     });
+    */
 };
 
 var run_next = function (contextd, done) {

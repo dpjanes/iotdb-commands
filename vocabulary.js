@@ -44,7 +44,11 @@ var _normalize = function(v) {
     }
 };
 
-var _stem = function(s) {
+var normalize_action = function(s) {
+    return s.toLowerCase();
+};
+
+var normalize_thing = function(s) {
     return stemmer(s.toLowerCase());
 };
 
@@ -89,7 +93,7 @@ var _process_action = function(d) {
 
     d = _.ld.compact(d);
 
-    var action = d["action"];
+    var action = normalize_action(d["action"]);
     var actionds = actiondsd[action];
     if (actionds === undefined) {
         actionds = [];
@@ -102,7 +106,7 @@ var _process_action = function(d) {
 var _process_thing = function(d) {
     d = _.ld.compact(d);
 
-    var thing = _stem(d["thing"]);
+    var thing = normalize_thing(d["thing"]);
     var thingds = thingdsd[thing];
     if (thingds === undefined) {
         thingds = [];
@@ -157,10 +161,17 @@ var _load_vocabulary = function() {
 
 };
 
-var thing = function(name) {
+/**
+ *  Return the things corresponding to the name
+ */
+var things = function(name) {
+    if (!name || !_.is.String(name)) {
+        return [];
+    }
+
     _load_vocabulary();
 
-    var name = _stem(name);
+    var name = normalize_thing(name);
     var thingds = thingdsd[name];
     if (thingds === undefined) {
         return [];
@@ -169,21 +180,27 @@ var thing = function(name) {
     }
 };
 
-var action = function(name) {
+/**
+ *  Return the actions corresponding to the name
+ */
+var actions = function(name) {
+    if (!name || !_.is.String(name)) {
+        return [];
+    }
+
     _load_vocabulary();
 
-    var nameds = namedsd[name];
-    if (nameds === undefined) {
+    var name = normalize_action(name);
+    var actionds = actiondsd[name];
+    if (actionds === undefined) {
         return [];
     } else {
-        return nameds;
+        return actionds;
     }
 };
 
 /**
  *  API
  */
-exports.thing = thing;
-exports.action = action;
-
-console.log(thing("Light"));
+exports.things = things;
+exports.actions = actions;

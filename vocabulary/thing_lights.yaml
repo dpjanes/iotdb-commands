@@ -1,0 +1,4 @@
+---
+thing: "lights"
+facet: "iot-facet:lighting"
+schema:name: "Lights"
