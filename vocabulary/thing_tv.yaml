@@ -1,0 +1,6 @@
+---
+thing: "tv"
+iot:facet: "iot-facet:media.tv"
+---
+thing: "tv"
+schema:name: "TV"

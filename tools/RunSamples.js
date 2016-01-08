@@ -42,7 +42,7 @@ var async = require('async');
 var engine = require('../engine');
 
 var ad = require('minimist')(process.argv.slice(2), {
-    boolean: ["write", "test", "all"],
+    boolean: ["write", "test", "all", "verbose", ],
 });
 
 // --- main ---
@@ -132,7 +132,6 @@ var main = function() {
 
     var _after_transporter = function(error, contextd) {
         var _on_each = function(json_path, callback) {
-            
             run_one(
                 _.d.compose.shallow({ json_path: json_path, }, contextd), 
                 callback
@@ -148,6 +147,7 @@ var main = function() {
     load_transporter({
         json_paths: json_paths,
         ad: ad,
+        verbose: ad.verbose,
     }, _after_transporter);
 };
 
