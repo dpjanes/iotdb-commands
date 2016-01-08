@@ -1,0 +1,8 @@
+---
+query: "on"
+sensor: ":on"
+value: true
+---
+query: "off"
+sensor: ":on"
+value: false
