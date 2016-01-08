@@ -88,38 +88,57 @@ var _prepare_items = function(items, paramd) {
 /**
  */
 var match = function(paramd, done) {
-    var transporter = paramd.transporter;
-    var actiond = paramd.actiond;
+    paramd = _.d.compose(paramd, {
+        user: null,
+        verbose: true,
+    });
 
-    var tds = _prepare_items(vocabulary.things(actiond.thing));
-    var ads = _prepare_items(vocabulary.actions(actiond.action));
+    var tds = _prepare_items(vocabulary.things(paramd.actiond.thing));
+    var ads = _prepare_items(vocabulary.actions(paramd.actiond.action));
 
-    console.log(ads);
-    console.log(tds);
-    
+    if (paramd.verbose) {
+        logger.info({
+            actiond: paramd.actiond,
+            match: {
+                things: tds,
+                attributes: ads,
+            }
+        });
+    }
+
     var matches = [];
 
-    transporter.all({
+    paramd.transporter.all({
         bands: [ "meta", "model", ],
-        user: null,         // for future improvement
-    }, function(error, d) {
-        console.log("-----");
-        console.log("d", d);
+        user: paramd.user,
+    }, function(error, thingd) {
+        if (paramd.verbose) {
+            if (thingd) {
+                logger.info({
+                    thing_name: _.ld.first(thingd.meta, "schema:name", ""),
+                    id: thingd.id,
+                }, "check");
+            }
+
+            logger.debug({
+                thing: thingd,
+            });
+        };
 
         if (error) {
             return done(error);
-        } else if (!d) {
+        } else if (!thingd) {
             return done(null, matches);
         }
 
-        d.meta = _prepare_item(d.meta);
+        thingd.meta = _prepare_item(thingd.meta);
 
         // look for a matching thing
         if (!tds.some(function(td) {
             var match = null;
             for (var key in td) {
                 var want_values = _.ld.list(td, key, []);
-                var have_values = _.ld.list(d.meta, key, []);
+                var have_values = _.ld.list(thingd.meta, key, []);
                 var common = _.intersection(want_values, have_values);
                 if (common.length === 0) {
                     match = false;
@@ -138,7 +157,7 @@ var match = function(paramd, done) {
 
         // look for a matching model attribute with a purpose
         if (!ads.some(function(ad) {
-            var attributes = _.ld.list(d.model, "iot:attribute", []);
+            var attributes = _.ld.list(thingd.model, "iot:attribute", []);
             for (var ai = 0; ai < attributes.length; ai++) {
                 var attribute = _prepare_item(attributes[ai]);
                 var match = null;
@@ -162,84 +181,16 @@ var match = function(paramd, done) {
             return;
         }
 
-        matches.push(d.id);
-        // console.log("HERE - A MATCH", d);
+        if (paramd.verbose) {
+            logger.info({
+                thing_name: _.ld.first(thingd.meta, "schema:name", ""),
+                id: thingd.id,
+            }, "MATCH");
+        };
+
+        matches.push(thingd.id);
     });
 };
-
-
-/*
-var run_one = function (contextd, done) {
-    var json_path = contextd.json_path;
-    if (!path.isAbsolute(json_path)) {
-        json_path = "./" + json_path;
-    }
-
-    var json = require(json_path);
-    console.log("PATH", contextd.json_path, json);
-
-    var tds = vocabulary.things(json.thing);
-    var ads = vocabulary.actions(json.action);
-
-    var meta_ors = [];
-    tds.map(function(td) {
-        var meta_ands = [];
-
-        var facets = _.ld.list(td, "facet", []);
-        if (facets.length) {
-            meta_ands.push("meta:iot:facet & " + JSON.stringify(facets));
-        }
-
-        _.mapObject(td, function(value, key) {
-            if (key.indexOf(':') === -1) {
-                return;
-            }
-
-            meta_ands.push("meta:" + key + " = " + JSON.stringify(value));
-        });
-
-        meta_ors.push("( " + meta_ands.join(" AND ") + " )");
-    });
-
-    var model_ors = [];
-    ads.map(function(ad) {
-        var model_ands = [];
-
-        _.mapObject(ad, function(value, key) {
-            if (key.indexOf(':') === -1) {
-                return;
-            }
-
-            model_ands.push("model:" + key + " = " + JSON.stringify(value));
-        });
-
-        model_ors.push("( " + model_ands.join(" AND ") + " )");
-    });
-
-    var query = [];
-    if (meta_ors.length) {
-        query.push("(" + meta_ors.join(" OR ") + ")");
-    }
-    if (model_ors.length) {
-        query.push("(" + model_ors.join(" OR ") + ")");
-    }
-
-    query = query.join(" AND ");
-
-    logger.info({
-        json: json,
-        things: tds,
-        actions: ads,
-        path: contextd.json_path, 
-        meta_ors: meta_ors,
-        model_ors: model_ors,
-        query: query,
-    });
-
-    done();
-};
-
-*/
 
 /**
  */
