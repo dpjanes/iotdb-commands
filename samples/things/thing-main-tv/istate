@@ -1,0 +1,5 @@
+{
+    "on": false,
+    "channel": 21,
+    "band": "iot-purpose:band.hdmi"
+}
