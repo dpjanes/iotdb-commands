@@ -1,5 +1,5 @@
 {
-    "iot:thing-id": "thing-02",
+    "iot:thing-id": "thing-master-ac",
     "iot:model-id": "model-02",
     "schema:name": "Air Conditioner",
     "iot:facet": [ "iot-facet:climate", "iot-facet:climate.cooling" ],
