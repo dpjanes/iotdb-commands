@@ -99,13 +99,14 @@ var run_one = function (contextd, done) {
 
     engine.match(_.d.compose.shallow({
         actiond: actiond,
-    }, contextd), function(error, ids) {
+    }, contextd), function(error, matches) {
         if (error) {
             return done(error);
         } 
 
         logger.info({
-            ids: _.map(ids, function(d) { return d.id }),
+            // ids: _.map(ids, function(d) { return d.id }),
+            matches: matches,
             action: actiond,
         }, "MATCHES");
         
