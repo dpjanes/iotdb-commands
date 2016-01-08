@@ -25,6 +25,11 @@
 var iotdb = require('iotdb');
 var _ = iotdb._;
 
+var logger = iotdb.logger({
+    name: 'iotdb-commands',
+    module: 'engine',
+});
+
 var vocabulary = require('./vocabulary');
 var stemmer = require('porter-stemmer').stemmer;
 
@@ -32,7 +37,12 @@ var _normalize_word = function(word) {
     return stemmer(word.toLowerCase());
 };
 
-var _prepare_item = function(item, compact) {
+/**
+ *  This:
+ *  - uses only JSON-LD-like data
+ *  - normalizes english words to make comparison possible
+ */
+var _prepare_item = function(item, compact, paramd) {
     if (compact) {
         item = _.ld.compact(item, { scrub: true });
     }
@@ -58,7 +68,11 @@ var _prepare_item = function(item, compact) {
     return item;
 };
 
-var _prepare_items = function(items) {
+/**
+ *  This prepares all the items are turns the new list.
+ *  Empty items are excluded.
+ */
+var _prepare_items = function(items, paramd) {
     var ds = [];
 
     items.map(function(d) {
@@ -71,7 +85,12 @@ var _prepare_items = function(items) {
     return ds;
 };
 
-var match = function(transporter, actiond, done) {
+/**
+ */
+var match = function(paramd, done) {
+    var transporter = paramd.transporter;
+    var actiond = paramd.actiond;
+
     var tds = _prepare_items(vocabulary.things(actiond.thing));
     var ads = _prepare_items(vocabulary.actions(actiond.action));
 
@@ -90,7 +109,7 @@ var match = function(transporter, actiond, done) {
         if (error) {
             return done(error);
         } else if (!d) {
-            return done(null, null);
+            return done(null, matches);
         }
 
         d.meta = _prepare_item(d.meta);
@@ -143,7 +162,8 @@ var match = function(transporter, actiond, done) {
             return;
         }
 
-        console.log("HERE - A MATCH", d);
+        matches.push(d.id);
+        // console.log("HERE - A MATCH", d);
     });
 };
 

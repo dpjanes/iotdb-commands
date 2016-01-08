@@ -35,7 +35,9 @@ var FSTransport = require('iotdb-transport-fs').Transport;
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
+
 var minimist = require('minimist');
+var async = require('async');
 
 var engine = require('../engine');
 
@@ -45,18 +47,17 @@ var ad = require('minimist')(process.argv.slice(2), {
 
 // --- main ---
 var load_transporter = function(contextd, done) {
-    contextd.transporter = new FSTransport({
-        prefix: "samples/things",
-    });
-
-    done(null, null);
+    done(null, _.d.compose({
+        transporter: new FSTransport({
+            prefix: "samples/things",
+        }),
+    }, contextd));
 };
 
 /**
  *  This will callback with all the metas, then null
  */
 var metas = function(contextd, callback) {
-    // console.log("HERE:XXX", contextd.transporter);
     var count = 0;
     var _increment = function() {
         count++;
@@ -94,94 +95,18 @@ var run_one = function (contextd, done) {
         json_path = "./" + json_path;
     }
 
-    var jsond = require(json_path);
+    var actiond = require(json_path);
 
-    engine.match(contextd.transporter, jsond, function(error, id) {
+    engine.match({
+        transporter: contextd.transporter,
+        actiond: actiond,
+    }, function(error, ids) {
         if (error) {
             return done(error);
-        } else if (id === null) {
-            return done(null);
-        } else {
-            console.log("ID", id);
-        }
-    });
-    
-
-    /*
-    console.log("PATH", contextd.json_path, json);
-
-    var tds = vocabulary.things(json.thing);
-    var ads = vocabulary.actions(json.action);
-
-    var meta_ors = [];
-    tds.map(function(td) {
-        var meta_ands = [];
-
-        var facets = _.ld.list(td, "facet", []);
-        if (facets.length) {
-            meta_ands.push("meta:iot:facet & " + JSON.stringify(facets));
-        }
-
-        _.mapObject(td, function(value, key) {
-            if (key.indexOf(':') === -1) {
-                return;
-            }
-
-            meta_ands.push("meta:" + key + " = " + JSON.stringify(value));
-        });
-
-        meta_ors.push("( " + meta_ands.join(" AND ") + " )");
-    });
-
-    var model_ors = [];
-    ads.map(function(ad) {
-        var model_ands = [];
-
-        _.mapObject(ad, function(value, key) {
-            if (key.indexOf(':') === -1) {
-                return;
-            }
-
-            model_ands.push("model:" + key + " = " + JSON.stringify(value));
-        });
-
-        model_ors.push("( " + model_ands.join(" AND ") + " )");
-    });
-
-    var query = [];
-    if (meta_ors.length) {
-        query.push("(" + meta_ors.join(" OR ") + ")");
-    }
-    if (model_ors.length) {
-        query.push("(" + model_ors.join(" OR ") + ")");
-    }
-
-    query = query.join(" AND ");
-
-    logger.info({
-        json: json,
-        things: tds,
-        actions: ads,
-        path: contextd.json_path, 
-        meta_ors: meta_ors,
-        model_ors: model_ors,
-        query: query,
-    });
-
-    done();
-    */
-};
-
-var run_next = function (contextd, done) {
-    if (contextd.json_paths.length === 0) {
-        return done(null, null);
-    }
-
-    contextd.json_path = contextd.json_paths[0];
-    contextd.json_paths.splice(0, 1);
-
-    run_one(contextd, function(error, result) {
-        run_next(contextd, done);
+        } 
+        
+        console.log("ID", ids);
+        done(null, null);
     });
 };
 
@@ -204,17 +129,26 @@ var main = function() {
         });
     }
 
-    var contextd = {
-        json_paths: json_paths,
-        ad: ad,
+
+    var _after_transporter = function(error, contextd) {
+        var _on_each = function(json_path, callback) {
+            
+            run_one(
+                _.d.compose({ json_path: json_path, }, contextd), 
+                callback
+            );
+        };
+        var _on_done = function(error) {
+            process.nextTick(process.exit);
+        };
+
+        async.eachSeries(contextd.json_paths, _on_each, _on_done);
     };
 
-    load_transporter(contextd, function(error, result) {
-        run_next(contextd, function(error, result) {
-            process.nextTick(process.exit);
-        });
-    });
-
+    load_transporter({
+        json_paths: json_paths,
+        ad: ad,
+    }, _after_transporter);
 };
 
 main();
