@@ -39,7 +39,7 @@ var util = require('util');
 var minimist = require('minimist');
 var async = require('async');
 
-var engine = require('../engine');
+var engine = require('../lib/engine');
 
 var ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all", "verbose", ],
@@ -97,15 +97,18 @@ var run_one = function (contextd, done) {
 
     var actiond = require(json_path);
 
-    engine.match({
-        transporter: contextd.transporter,
+    engine.match(_.d.compose.shallow({
         actiond: actiond,
-    }, function(error, ids) {
+    }, contextd), function(error, ids) {
         if (error) {
             return done(error);
         } 
+
+        logger.info({
+            ids: _.map(ids, function(d) { return d.id }),
+            action: actiond,
+        }, "matches");
         
-        console.log("ID", ids);
         done(null, null);
     });
 };

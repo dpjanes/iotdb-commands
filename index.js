@@ -22,5 +22,4 @@
 
 "use strict";
 
-var vocabulary = require('./vocabulary');
-
+var vocabulary = require('./lib/vocabulary');
