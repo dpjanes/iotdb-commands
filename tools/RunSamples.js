@@ -107,7 +107,7 @@ var run_one = function (contextd, done) {
         logger.info({
             ids: _.map(ids, function(d) { return d.id }),
             action: actiond,
-        }, "matches");
+        }, "MATCHES");
         
         done(null, null);
     });
