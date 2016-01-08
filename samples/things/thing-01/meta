@@ -1,7 +1,7 @@
 {
     "iot:thing-id": "thing-01",
     "iot:model-id": "model-01",
-    "schema:name": "The Name",
+    "schema:name": "Heater",
     "iot:facet": [ "iot-facet:climate", "iot-facet:climate.heating" ],
     "iot:zone": "Basement"
 }

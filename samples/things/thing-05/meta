@@ -1,7 +1,7 @@
 {
     "iot:thing-id": "thing-05",
     "iot:model-id": "model-05",
-    "schema:name": "Imperial Temperature / Humidity",
-    "iot:facet": [ "iot-facet:climate" ],
+    "schema:name": "Thermometer",
+    "iot:facet": [ "iot-facet:climate", "iot-facet:climate.sensor", "iot-facet:climate.sensor.temperature", "iot-facet:climate.sensor.humidity" ],
     "iot:zone": "Main Floor"
 }
