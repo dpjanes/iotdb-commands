@@ -45,6 +45,8 @@ var _normalize_word = function(word) {
 var _prepare_item = function(item, compact, paramd) {
     if (compact) {
         item = _.ld.compact(item, { scrub: true });
+    } else {
+        item = _.d.compose.shallow(item);
     }
 
     if (_.is.Empty(item)) {
@@ -88,9 +90,9 @@ var _prepare_items = function(items, paramd) {
 /**
  */
 var match = function(paramd, done) {
-    paramd = _.d.compose(paramd, {
+    paramd = _.d.compose.shallow(paramd, {
         user: null,
-        verbose: true,
+        verbose: false,
     });
 
     var tds = _prepare_items(vocabulary.things(paramd.actiond.thing));
@@ -131,14 +133,14 @@ var match = function(paramd, done) {
             return done(null, matches);
         }
 
-        thingd.meta = _prepare_item(thingd.meta);
+        var meta = _prepare_item(thingd.meta);
 
         // look for a matching thing
         if (!tds.some(function(td) {
             var match = null;
             for (var key in td) {
                 var want_values = _.ld.list(td, key, []);
-                var have_values = _.ld.list(thingd.meta, key, []);
+                var have_values = _.ld.list(meta, key, []);
                 var common = _.intersection(want_values, have_values);
                 if (common.length === 0) {
                     match = false;
@@ -153,7 +155,6 @@ var match = function(paramd, done) {
         })) {
             return;
         }
-
 
         // look for a matching model attribute with a purpose
         if (!ads.some(function(ad) {
@@ -188,7 +189,12 @@ var match = function(paramd, done) {
             }, "MATCH");
         };
 
-        matches.push(thingd.id);
+        matches.push(_.d.compose.shallow({
+            score: {
+                thing: 1,
+                action: 1,
+            }
+        }, thingd));
     });
 };
 

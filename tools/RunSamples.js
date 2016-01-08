@@ -47,7 +47,7 @@ var ad = require('minimist')(process.argv.slice(2), {
 
 // --- main ---
 var load_transporter = function(contextd, done) {
-    done(null, _.d.compose({
+    done(null, _.d.compose.shallow({
         transporter: new FSTransport({
             prefix: "samples/things",
         }),
@@ -134,7 +134,7 @@ var main = function() {
         var _on_each = function(json_path, callback) {
             
             run_one(
-                _.d.compose({ json_path: json_path, }, contextd), 
+                _.d.compose.shallow({ json_path: json_path, }, contextd), 
                 callback
             );
         };
