@@ -37,7 +37,7 @@ var path = require('path');
 var util = require('util');
 var minimist = require('minimist');
 
-var vocabulary = require('./vocabulary');
+var engine = require('../engine');
 
 var ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all"],
@@ -89,7 +89,25 @@ var metas = function(contextd, callback) {
 };
 
 var run_one = function (contextd, done) {
-    var json = require("./" + contextd.json_path);
+    var json_path = contextd.json_path;
+    if (!path.isAbsolute(json_path)) {
+        json_path = "./" + json_path;
+    }
+
+    var jsond = require(json_path);
+
+    engine.match(contextd.transporter, jsond, function(error, id) {
+        if (error) {
+            return done(error);
+        } else if (id === null) {
+            return done(null);
+        } else {
+            console.log("ID", id);
+        }
+    });
+    
+
+    /*
     console.log("PATH", contextd.json_path, json);
 
     var tds = vocabulary.things(json.thing);
@@ -98,19 +116,47 @@ var run_one = function (contextd, done) {
     var meta_ors = [];
     tds.map(function(td) {
         var meta_ands = [];
+
         var facets = _.ld.list(td, "facet", []);
-        meta_ands.push("meta:facet & " + JSON.stringify(facets));
+        if (facets.length) {
+            meta_ands.push("meta:iot:facet & " + JSON.stringify(facets));
+        }
 
         _.mapObject(td, function(value, key) {
             if (key.indexOf(':') === -1) {
                 return;
             }
 
-            meta_ands.push(key + " = " + JSON.stringify(value));
+            meta_ands.push("meta:" + key + " = " + JSON.stringify(value));
         });
 
         meta_ors.push("( " + meta_ands.join(" AND ") + " )");
     });
+
+    var model_ors = [];
+    ads.map(function(ad) {
+        var model_ands = [];
+
+        _.mapObject(ad, function(value, key) {
+            if (key.indexOf(':') === -1) {
+                return;
+            }
+
+            model_ands.push("model:" + key + " = " + JSON.stringify(value));
+        });
+
+        model_ors.push("( " + model_ands.join(" AND ") + " )");
+    });
+
+    var query = [];
+    if (meta_ors.length) {
+        query.push("(" + meta_ors.join(" OR ") + ")");
+    }
+    if (model_ors.length) {
+        query.push("(" + model_ors.join(" OR ") + ")");
+    }
+
+    query = query.join(" AND ");
 
     logger.info({
         json: json,
@@ -118,15 +164,11 @@ var run_one = function (contextd, done) {
         actions: ads,
         path: contextd.json_path, 
         meta_ors: meta_ors,
+        model_ors: model_ors,
+        query: query,
     });
 
-    /*
-    metas(contextd, function(error, metad) {
-        if (metad === null) {
-            return done(null, null);
-        }
-        console.log("META", json, metad);
-    });
+    done();
     */
 };
 
@@ -146,7 +188,7 @@ var run_next = function (contextd, done) {
 var main = function() {
     var json_paths = [];
     if (ad.all) {
-        var samples_dir = "samples";
+        var samples_dir = path.join(__dirname, "..", "samples");
 
         var names = fs.readdirSync(samples_dir);
         names.map(function (name) {
@@ -154,10 +196,12 @@ var main = function() {
                 return;
             }
 
-            json_paths.push(path.join("samples", name));
+            json_paths.push(path.join(samples_dir, name));
         });
     } else if (ad._.length) {
-        json_paths = ad._;
+        json_paths = _.map(ad._, function(json_path) {
+            return path.resolve(json_path);
+        });
     }
 
     var contextd = {

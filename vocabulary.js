@@ -52,6 +52,10 @@ var normalize_thing = function(s) {
     return stemmer(s.toLowerCase());
 };
 
+var normalize_word = function(s) {
+    return stemmer(s.toLowerCase());
+};
+
 var actiondsd = {};
 var thingdsd = {};
 

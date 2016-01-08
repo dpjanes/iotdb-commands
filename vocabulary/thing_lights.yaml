@@ -1,4 +1,6 @@
 ---
 thing: "lights"
-facet: "iot-facet:lighting"
+iot:facet: "iot-facet:lighting"
+---
+thing: "lights"
 schema:name: "Lights"
