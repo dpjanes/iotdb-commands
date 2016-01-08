@@ -39,7 +39,7 @@ var util = require('util');
 var minimist = require('minimist');
 var async = require('async');
 
-var engine = require('../lib/engine');
+var match = require('../lib/match');
 
 var ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all", "verbose", ],
@@ -97,7 +97,7 @@ var run_one = function (contextd, done) {
 
     var actiond = require(json_path);
 
-    engine.match(_.d.compose.shallow({
+    match.match(_.d.compose.shallow({
         actiond: actiond,
     }, contextd), function(error, matches) {
         if (error) {
