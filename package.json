@@ -1,0 +1,36 @@
+{
+    "author": "David P. Janes <davidjanes@iotdb.org> (https://iotdb.org)", 
+    "bugs": {
+        "url": "https://github.com/dpjanes/iotdb-commands/issues"
+    }, 
+    "dependencies": {
+        "iotdb": ">=0.11.0", 
+        "iotdb-format": "~0.0.1"
+    }, 
+    "description": "IOTDB Module", 
+    "devDependencies": {
+        "grunt": "~0.4.5", 
+        "grunt-contrib-jshint": "~0.11.3", 
+        "grunt-contrib-nodeunit": "~0.4.1", 
+        "grunt-contrib-uglify": "~0.11.0", 
+        "grunt-contrib-watch": "~0.6.1", 
+        "grunt-jsbeautifier": "~0.2.10", 
+        "jshint-stylish": "~2.1.0", 
+        "load-grunt-tasks": "~3.4.0", 
+        "request": "~2.67.0"
+    }, 
+    "homepage": "https://iotdb.io", 
+    "iotdb": {}, 
+    "license": "Apache-2.0", 
+    "main": "index.js", 
+    "name": "iotdb-commands", 
+    "private": false, 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/dpjanes/iotdb-commands"
+    }, 
+    "scripts": {
+        "test": "grunt"
+    }, 
+    "version": "0.0.0"
+}
