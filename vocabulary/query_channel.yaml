@@ -1,3 +1,4 @@
 ---
 query: "channel"
 sensor: ":channel"
+response: "the channel is {{ value }}"

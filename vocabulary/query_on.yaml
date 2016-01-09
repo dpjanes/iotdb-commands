@@ -2,7 +2,9 @@
 query: "on"
 sensor: ":on"
 value: true
+response: "is {{ value|binary('on', 'off') }}"
 ---
 query: "off"
 sensor: ":on"
 value: false
+response: "is {{ value|binary('on', 'off') }}"
