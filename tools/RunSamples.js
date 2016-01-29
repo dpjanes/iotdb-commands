@@ -65,26 +65,32 @@ var metas = function(contextd, callback) {
     var _decrement = function() {
         if (--count === 0) {
             callback(null, null);
-            callback = function() {};
+            callback = _.noop;
         }
     }
 
     _increment();
-    contextd.transporter.list(function(ld) {
-        if (ld.id) {
-            _increment();
-            contextd.transporter.get({
-                id: ld.id,
-                band: "meta",
-            }, function(gd) {
-                if (gd.value) {
-                    callback(null, gd);
-                }
-                _decrement();
-            });
-        } else if (ld.end) {
+    contextd.transporter.list(function(error, ld) {
+        if (error) {
+            callback(error, null);
+            callback = _.noop;
+            return;
+        }
+        if (!ld) {
             _decrement();
-            // return callback(null, null);
+            return;
+        }
+
+        _increment();
+        contextd.transporter.get({
+            id: ld.id,
+            band: "meta",
+        }, function(error, gd) {
+            if (gd && gd.value) {
+                callback(null, gd);
+            }
+            _decrement();
+        });
         }
     });
 };
