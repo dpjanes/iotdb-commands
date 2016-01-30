@@ -39,7 +39,7 @@ var util = require('util');
 var minimist = require('minimist');
 var async = require('async');
 
-var match = require('../lib/match');
+var iotdb_commands = require('../index');
 
 var ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all", "verbose", ],
@@ -48,50 +48,10 @@ var ad = require('minimist')(process.argv.slice(2), {
 // --- main ---
 var load_transporter = function(contextd, done) {
     done(null, _.d.compose.shallow({
-        transporter: new FSTransport({
+        transport: new FSTransport({
             prefix: "samples/things",
         }),
     }, contextd));
-};
-
-/**
- *  This will callback with all the metas, then null
- */
-var metas = function(contextd, callback) {
-    var count = 0;
-    var _increment = function() {
-        count++;
-    };
-    var _decrement = function() {
-        if (--count === 0) {
-            callback(null, null);
-            callback = _.noop;
-        }
-    }
-
-    _increment();
-    contextd.transporter.list(function(error, ld) {
-        if (error) {
-            callback(error, null);
-            callback = _.noop;
-            return;
-        }
-        if (!ld) {
-            _decrement();
-            return;
-        }
-
-        _increment();
-        contextd.transporter.get({
-            id: ld.id,
-            band: "meta",
-        }, function(error, gd) {
-            if (gd && gd.value) {
-                callback(null, gd);
-            }
-            _decrement();
-        });
-    });
 };
 
 var run_one = function (contextd, done) {
@@ -102,7 +62,7 @@ var run_one = function (contextd, done) {
 
     var actiond = require(json_path);
 
-    match.match(_.d.compose.shallow({
+    iotdb_commands.match(_.d.compose.shallow({
         actiond: actiond,
     }, contextd), function(error, matches) {
         if (error) {
