@@ -91,7 +91,6 @@ var metas = function(contextd, callback) {
             }
             _decrement();
         });
-        }
     });
 };
 

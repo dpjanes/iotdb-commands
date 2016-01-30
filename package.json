@@ -30,7 +30,8 @@
         "url": "https://github.com/dpjanes/iotdb-commands"
     }, 
     "scripts": {
-        "test": "grunt"
+        "test": "grunt",
+        "samples": "node tools/RunSamples --all --test"
     }, 
     "version": "0.0.0"
 }

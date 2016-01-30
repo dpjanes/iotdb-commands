@@ -22,4 +22,22 @@
 
 "use strict";
 
+var iotdb = require('iotdb');
+var _ = iotdb._;
+var logger = iotdb.logger({
+    name: "iotdb-commands",
+    module: "idnex",
+});
+
 var vocabulary = require('./lib/vocabulary');
+var match = require('./lib/match');
+
+
+/**
+ *  API
+ */
+exports.things = vocabulary.things;
+exports.actions = vocabulary.actions;
+exports.querys = vocabulary.querys;
+
+exports.match = match.match;
