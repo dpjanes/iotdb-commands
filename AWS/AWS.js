@@ -30,6 +30,8 @@ var _ = iotdb._;
 var path = require('path')
 var iotdb_commands = require('iotdb-commands');
 
+iotdb_commands.load("./extensions");
+
 var MQTTTransport = require('iotdb-transport-mqtt').Transport;
 var IOTDBTransport = require('iotdb-transport-iotdb').Transport;
 
@@ -41,6 +43,19 @@ var mqttd = _.d.compose.shallow({
     cert: path.join(__dirname, "certs/cert.pem"),
     key: path.join(__dirname, "certs/private.pem"),
 });
+
+/**
+ *  This is the IR controller
+ */
+var ir_thing = iotdb.connect('ITachIR');
+var extd = {
+    "TV On": function() {
+        ir_thing.set(":command", "sendir,1:1,1,38000,1,69,343,172,21,22,21,22,21,65,21,22,21,22,21,22,21,22,21,22,21,65,21,65,21,22,21,65,21,65,21,65,21,65,21,65,21,22,21,22,21,65,21,22,21,22,21,22,21,65,21,65,21,65,21,65,21,22,21,65,21,65,21,65,21,22,21,22,21,1673,343,86,21,3732");
+    },
+    "TV Off": function() {
+        ir_thing.set(":command", "sendir,1:1,1,38000,1,69,343,172,21,22,21,22,21,65,21,22,21,22,21,22,21,22,21,22,21,65,21,65,21,22,21,65,21,65,21,65,21,65,21,65,21,65,21,22,21,65,21,22,21,22,21,22,21,65,21,65,21,22,21,65,21,22,21,65,21,65,21,65,21,22,21,22,21,1673,343,86,21,3732");
+    },
+}
 
 /**
  *  You will have to change 
@@ -81,7 +96,16 @@ mqtt_transport.updated({
 
             console.log("MATCH", match);
 
-            if (match.id && match.ostate) {
+            if (match.extension) {
+                var ext = extd[match.extension.extension];
+                if (ext) {
+                    ext();
+                } else {
+                    logger.error({
+                        match: match,
+                    }, "extension not found");
+                }
+            } else if (match.id && match.ostate) {
                 console.log("HERE:1");
                 iotdb_transport.put({
                     id: match.id,
