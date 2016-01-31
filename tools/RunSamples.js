@@ -82,7 +82,7 @@ var run_one = function (contextd, done) {
 var main = function() {
     var json_paths = [];
     if (ad.all) {
-        var samples_dir = path.join(__dirname, "..", "samples");
+        var samples_dir = path.join(__dirname, "..", "samples", "actions");
 
         var names = fs.readdirSync(samples_dir);
         names.map(function (name) {
