@@ -31,7 +31,7 @@
     }, 
     "scripts": {
         "test": "grunt",
-        "samples": "node tools/RunSamples --all --test"
+        "samples": "node tools/RunSamples --extensions extensions --all --test"
     }, 
     "version": "0.0.0"
 }

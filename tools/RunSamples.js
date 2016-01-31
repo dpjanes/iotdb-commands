@@ -98,6 +98,9 @@ var main = function() {
         });
     }
 
+    if (ad.extensions) {
+        iotdb_commands.load(ad.extensions);
+    }
 
     var _after_transporter = function(error, contextd) {
         var _on_each = function(json_path, callback) {

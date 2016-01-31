@@ -36,8 +36,12 @@ var match = require('./lib/match');
 /**
  *  API
  */
+exports.add_extensions = vocabulary.add_extensions;
+
 exports.things = vocabulary.things;
 exports.actions = vocabulary.actions;
 exports.querys = vocabulary.querys;
+exports.extensions = vocabulary.extensions;
+exports.load = vocabulary.load;
 
 exports.match = match.match;
