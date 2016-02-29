@@ -1,0 +1,16 @@
+---
+action: "turn up"
+match:
+    facet: "iot-facet:lighting.light"
+do:
+    attribute: ":brightness"
+    value: +20
+    unit: iot-unit:math.fraction.percent
+---
+action: "turn down"
+match:
+    facet: "iot-facet:lighting.light"
+do:
+    attribute: ":brightness"
+    value: -20
+    unit: iot-unit:math.fraction.percent

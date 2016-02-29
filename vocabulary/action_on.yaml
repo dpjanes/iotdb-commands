@@ -1,14 +1,18 @@
 ---
 action: "turn on"
-actuator: ":on"
-value: true
+out:
+    attribute: ":on"
+    value: true
 ---
 action: "turn on"
-actuator: ":on.true"
+out:
+    attribute: ":on.true"
 ---
 action: "turn off"
-actuator: ":on"
-value: false
+out:
+    attribute: ":on"
+    value: false
 ---
 action: "turn off"
-actuator: ":on.false"
+out:
+    attribute: ":on.false"
