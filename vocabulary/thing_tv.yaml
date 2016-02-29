@@ -1,7 +1,7 @@
 ---
 thing: "tv"
 match:
-    iot:facet: "iot-facet:media.tv"
+    iot:facet: ":media.tv"
 ---
 thing: "tv"
 match:

@@ -1,12 +1,12 @@
 ---
 query: "on"
+response: "is {{ value|binary('off', 'on') }}"
 in:
-    attribute: ":on"
+    iot:purpose: ":on"
     value: true
-    response: "is {{ value|binary('off', 'on') }}"
 ---
 query: "off"
+response: "is {{ value|binary('off', 'on') }}"
 in:
-    attribute: ":on"
+    iot:purpose: ":on"
     value: false
-    response: "is {{ value|binary('off', 'on') }}"

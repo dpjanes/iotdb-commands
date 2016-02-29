@@ -1,18 +1,18 @@
 ---
 action: "turn on"
 out:
-    attribute: ":on"
+    iot:purpose: ":on"
     value: true
 ---
 action: "turn on"
 out:
-    attribute: ":on.true"
+    iot:purpose: ":on.true"
 ---
 action: "turn off"
 out:
-    attribute: ":on"
+    iot:purpose: ":on"
     value: false
 ---
 action: "turn off"
 out:
-    attribute: ":on.false"
+    iot:purpose: ":on.false"
