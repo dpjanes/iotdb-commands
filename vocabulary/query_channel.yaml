@@ -1,5 +1,5 @@
 ---
 query: "channel"
 response: "the channel is {{ value }}"
-in:
+istate:
     iot:purpose: ":channel"

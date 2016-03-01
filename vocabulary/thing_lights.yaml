@@ -1,8 +1,8 @@
 ---
 thing: "lights"
-match:
+meta:
     iot:facet: ":lighting.light"
 ---
 thing: "lights"
-match:
+meta:
     schema:name: "Lights"

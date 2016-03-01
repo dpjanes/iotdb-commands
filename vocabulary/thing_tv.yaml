@@ -1,8 +1,8 @@
 ---
 thing: "tv"
-match:
+meta:
     iot:facet: ":media.tv"
 ---
 thing: "tv"
-match:
+meta:
     schema:name: "TV"

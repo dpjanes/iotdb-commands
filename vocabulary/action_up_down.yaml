@@ -1,6 +1,6 @@
 ---
 action: "turn up"
-match:
+meta:
     iot:facet: ":lighting.light"
 do:
     iot:purpose: ":brightness"
@@ -8,8 +8,8 @@ do:
     value: +20
 ---
 action: "turn down"
-match:
-    facet: ":lighting.light"
+meta:
+    iot:facet: ":lighting.light"
 do:
     iot:purpose: ":brightness"
     iot:unit: ":math.fraction.percent"
