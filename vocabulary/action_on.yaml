@@ -1,18 +1,18 @@
 ---
 action: "turn on"
-ostate:
+do:
     iot:purpose: ":on"
     value: true
 ---
 action: "turn on"
-ostate:
+do:
     iot:purpose: ":on.true"
 ---
 action: "turn off"
-ostate:
+do:
     iot:purpose: ":on"
     value: false
 ---
 action: "turn off"
-ostate:
+do:
     iot:purpose: ":on.false"
