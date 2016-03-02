@@ -4,20 +4,23 @@
         "url": "https://github.com/dpjanes/iotdb-commands/issues"
     }, 
     "dependencies": {
-        "iotdb": ">=0.11.0", 
-        "iotdb-format": "~0.0.1"
+        "async": "~1.5.2", 
+        "iotdb": ">=0.13.0", 
+        "iotdb-format": "~0.0.2", 
+        "minimist": "~1.2.0", 
+        "recursive-readdir-sync": "~1.0.6"
     }, 
     "description": "IOTDB Module", 
     "devDependencies": {
         "grunt": "~0.4.5", 
-        "grunt-contrib-jshint": "~0.11.3", 
+        "grunt-contrib-jshint": "~1.0.0", 
         "grunt-contrib-nodeunit": "~0.4.1", 
-        "grunt-contrib-uglify": "~0.11.0", 
+        "grunt-contrib-uglify": "~0.11.1", 
         "grunt-contrib-watch": "~0.6.1", 
         "grunt-jsbeautifier": "~0.2.10", 
         "jshint-stylish": "~2.1.0", 
-        "load-grunt-tasks": "~3.4.0", 
-        "request": "~2.67.0"
+        "load-grunt-tasks": "~3.4.1", 
+        "request": "~2.69.0"
     }, 
     "homepage": "https://iotdb.io", 
     "iotdb": {}, 
@@ -30,8 +33,8 @@
         "url": "https://github.com/dpjanes/iotdb-commands"
     }, 
     "scripts": {
-        "test": "grunt",
-        "samples": "node tools/RunSamples --extensions samples/extensions --all --test"
+        "samples": "node tools/RunSamples --extensions samples/extensions --all --test", 
+        "test": "grunt"
     }, 
     "version": "0.0.0"
 }

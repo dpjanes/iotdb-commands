@@ -38,6 +38,7 @@ var util = require('util');
 
 var minimist = require('minimist');
 var async = require('async');
+var recursiveReaddirSync = require('recursive-readdir-sync')
 
 var iotdb_commands = require('../index');
 
@@ -84,13 +85,13 @@ var main = function() {
     if (ad.all) {
         var samples_dir = path.join(__dirname, "..", "samples", "actions");
 
-        var names = fs.readdirSync(samples_dir);
+        var names = recursiveReaddirSync(samples_dir);
         names.map(function (name) {
             if (!name.match(/[.]json$/)) {
                 return;
             }
 
-            json_paths.push(path.join(samples_dir, name));
+            json_paths.push(name);
         });
     } else if (ad._.length) {
         json_paths = _.map(ad._, function(json_path) {
