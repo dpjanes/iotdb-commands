@@ -1,0 +1,14 @@
+[
+  {
+    "level": 20,
+    "response": "ok",
+    "thing-id": "thing-main-tv",
+    "ostate": {
+      "mute": true
+    },
+    "request": {
+      "thing": "tv",
+      "action": "unmute"
+    }
+  }
+]

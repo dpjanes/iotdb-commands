@@ -56,25 +56,47 @@ var load_transporter = function(contextd, done) {
 };
 
 var run_one = function (contextd, done) {
-    var json_path = contextd.json_path;
-    if (!path.isAbsolute(json_path)) {
-        json_path = "./" + json_path;
+    var in_json_path = contextd.json_path;
+    if (!path.isAbsolute(in_json_path)) {
+        in_json_path = "./" + in_json_path;
     }
 
-    var actiond = require(json_path);
+    var out_json_path_parent = path.join(path.dirname(in_json_path), "output");
+    var out_json_path_file = path.basename(in_json_path);
+    var out_json_path = path.join(out_json_path_parent, out_json_path_file);
+
+    var requestd = require(in_json_path);
 
     iotdb_commands.match(_.d.compose.shallow({
-        actiond: actiond,
-    }, contextd), function(error, matches) {
+        requestd: requestd,
+    }, contextd), function(error, matchs) {
         if (error) {
             return done(error);
         } 
 
+        if (contextd.ad.write || contextd.ad.test) {
+            try {
+                fs.mkdirSync(out_json_path_parent);
+            } catch (x) {
+            }
+        }
+
         logger.info({
             // ids: _.map(ids, function(d) { return d.id }),
-            matches: matches,
-            action: actiond,
+            matchs: matchs,
+            request: requestd,
         }, "MATCHES");
+
+        matchs.map(function(match) {
+            match.request = requestd;
+        });
+
+        if (contextd.ad.write) {
+            fs.writeFileSync(out_json_path, JSON.stringify(matchs, null, 2));
+            logger.info({
+                path: out_json_path,
+            }, "saved matches for testing");
+        }
         
         done(null, null);
     });
