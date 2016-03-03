@@ -4,7 +4,7 @@ meta:
     iot:facet: ":lighting.light"
 do:
     iot:purpose: ":brightness"
-    iot:unit: ":math.fraction.percent"
+    rule: "delta-percent"
     value: +20
 ---
 action: "turn down"
@@ -12,7 +12,7 @@ meta:
     iot:facet: ":lighting.light"
 do:
     iot:purpose: ":brightness"
-    iot:unit: ":math.fraction.percent"
+    rule: "delta-percent"
     value: -20
 ---
 action: "turn up"
@@ -20,7 +20,7 @@ meta:
     iot:facet: ":media"
 do:
     iot:purpose: ":volume"
-    iot:unit: ":math.fraction.percent"
+    rule: "delta-percent"
     value: +20
 ---
 action: "turn down"
@@ -28,5 +28,5 @@ meta:
     iot:facet: ":media"
 do:
     iot:purpose: ":volume"
-    iot:unit: ":math.fraction.percent"
+    rule: "delta-percent"
     value: -20
