@@ -1,0 +1,18 @@
+---
+action: "mute"
+do:
+    iot:purpose: ":mute"
+    value: true
+---
+action: "mute"
+do:
+    iot:purpose: ":mute.true"
+---
+action: "unmute"
+do:
+    iot:purpose: ":mute"
+    value: false
+---
+action: "unmute"
+do:
+    iot:purpose: ":mute.false"
