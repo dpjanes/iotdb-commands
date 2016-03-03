@@ -28,6 +28,17 @@
             "iot:actuator": true
         },
         {
+            "@id": "#volume",
+            "iot:purpose": "iot-purpose:volume",
+            "iot:type": "iot:type.integer",
+            "iot:minimum": 0,
+            "iot:maximum": 100,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
             "@id": "#band",
             "iot:purpose": "iot-purpose:band",
             "iot:type": "iot:type.string",

@@ -14,3 +14,19 @@ do:
     iot:purpose: ":brightness"
     iot:unit: ":math.fraction.percent"
     value: -20
+---
+action: "turn up"
+meta:
+    iot:facet: ":media"
+do:
+    iot:purpose: ":volume"
+    iot:unit: ":math.fraction.percent"
+    value: +20
+---
+action: "turn down"
+meta:
+    iot:facet: ":media"
+do:
+    iot:purpose: ":volume"
+    iot:unit: ":math.fraction.percent"
+    value: -20
