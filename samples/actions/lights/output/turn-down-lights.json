@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "level": 20,
+    "response": "ok",
+    "thing-id": "thing-master-lighting",
+    "ostate": {
+      "brightness": 0
+    },
+    "request": {
+      "thing": "light",
+      "action": "turn down"
+    }
+  }
+]

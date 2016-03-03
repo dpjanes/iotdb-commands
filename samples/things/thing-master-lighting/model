@@ -8,6 +8,28 @@
             "iot:write": true,
             "iot:sensor": true,
             "iot:actuator": true
+        },
+        {
+            "@id": "#brightness",
+            "iot:purpose": "iot-purpose:brightness",
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:math.fraction.percent",
+            "iot:minimum": 0,
+            "iot:maximum": 100,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#color",
+            "iot:purpose": "iot-purpose:color",
+            "iot:type": "iot:type.string",
+            "iot:format": "iot:format.color",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
         }
     ]
 }
