@@ -1,0 +1,11 @@
+[
+  {
+    "level": 20,
+    "response": "the channel is 21",
+    "thing-id": "thing-main-tv",
+    "request": {
+      "thing": "tv",
+      "query": "channel"
+    }
+  }
+]

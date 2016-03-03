@@ -61,7 +61,7 @@ var run_one = function (contextd, done) {
         in_json_path = "./" + in_json_path;
     }
 
-    var out_json_path_parent = path.join(path.dirname(in_json_path), "output");
+    var out_json_path_parent = path.join(path.dirname(in_json_path), "Output");
     var out_json_path_file = path.basename(in_json_path);
     var out_json_path = path.join(out_json_path_parent, out_json_path_file);
 
@@ -105,7 +105,7 @@ var run_one = function (contextd, done) {
 var main = function() {
     var json_paths = [];
     if (ad.all) {
-        var samples_dir = path.join(__dirname, "..", "samples", "actions");
+        var samples_dir = path.join(__dirname, "..", "samples", "tests");
 
         var names = recursiveReaddirSync(samples_dir);
         names.map(function (name) {
