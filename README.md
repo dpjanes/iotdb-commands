@@ -12,8 +12,8 @@ This is an **advanced** topic.
 ### Testing
 Try it out using
 
-    $ node tools/RunSamples samples/actions/lights/turn-on-lights.json | bunyan
-    $ node tools/RunSamples samples/queries/query-tv-on.json | bunyan
+    $ node tools/RunSamples samples/tests/action-lights-turn-up.json | bunyan
+    $ node tools/RunSamples samples/tests/query-tv-channel.json | bunyan
 
 The `samples` folder is where all the sample data is stored. Eventually we'll
 have sample results, so `RunSamples` will work to run test caes
@@ -22,9 +22,7 @@ have sample results, so `RunSamples` will work to run test caes
 
 The folders
 
-    samples/actions
-    samples/queries
-    samples/extensions
+    samples/tests
 
 Have input Requests to test against
 

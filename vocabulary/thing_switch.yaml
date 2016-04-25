@@ -1,0 +1,8 @@
+---
+thing: "switch"
+meta:
+    iot:facet: ":switch"
+---
+thing: "switch"
+meta:
+    schema:name: "Switch"

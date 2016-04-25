@@ -30,3 +30,21 @@ do:
     iot:purpose: ":volume"
     rule: "delta-percent"
     value: -20
+---
+action: "turn up"
+meta:
+    iot:facet: ":climate.control"
+do:
+    iot:purpose: ":temperature"
+    rule: "delta"
+    value: 0.5
+    iot:unit: ":temperature.si.celsius"
+---
+action: "turn down"
+meta:
+    iot:facet: ":climate.control"
+do:
+    iot:purpose: ":temperature"
+    rule: "delta"
+    value: -0.5
+    iot:unit: ":temperature.si.celsius"
