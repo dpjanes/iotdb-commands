@@ -1,0 +1,8 @@
+---
+action: "mode"
+do:
+    iot:purpose: ":command"
+---
+action: "switch to"
+do:
+    iot:purpose: ":command"

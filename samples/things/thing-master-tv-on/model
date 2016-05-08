@@ -1,0 +1,13 @@
+{
+    "iot:attribute": [
+        {
+            "@id": "#on",
+            "iot:purpose": "iot-purpose:on.true",
+            "iot:type": "iot:type.null",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": false,
+            "iot:actuator": false
+        }
+    ]
+}
