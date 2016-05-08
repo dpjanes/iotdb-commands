@@ -4,7 +4,7 @@
         "url": "https://github.com/dpjanes/iotdb-commands/issues"
     }, 
     "dependencies": {
-        "async": "~2.0.0-rc.3", 
+        "async": "~2.0.0-rc.4", 
         "iotdb": ">=0.14.0", 
         "iotdb-format": "~0.0.3", 
         "iotdb-transport-fs": "~0.0.24", 
@@ -21,7 +21,7 @@
         "grunt-contrib-uglify": "~1.0.1", 
         "grunt-contrib-watch": "~1.0.0", 
         "grunt-jsbeautifier": "~0.2.12", 
-        "jshint-stylish": "~2.1.0", 
+        "jshint-stylish": "~2.2.0", 
         "load-grunt-tasks": "~3.5.0", 
         "request": "~2.72.0"
     }, 
@@ -39,5 +39,5 @@
         "samples": "node tools/RunSamples --extensions samples/extensions --all --test", 
         "test": "grunt"
     }, 
-    "version": "0.0.2"
+    "version": "0.0.3"
 }
