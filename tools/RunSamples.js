@@ -23,39 +23,39 @@
 
 "use strict";
 
-var iotdb = require('iotdb');
-var _ = iotdb._;
-var logger = iotdb.logger({
+const iotdb = require('iotdb');
+const _ = iotdb._;
+const logger = iotdb.logger({
     name: "iotdb-commands",
     module: "RunSamples",
 });
 
-var FSTransport = require('iotdb-transport-fs').Transport;
+const iotdb_transport_fs = require('iotdb-transport-fs');
 
-var fs = require('fs');
-var path = require('path');
-var util = require('util');
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
 
-var minimist = require('minimist');
-var async = require('async');
-var recursiveReaddirSync = require('recursive-readdir-sync')
+const minimist = require('minimist');
+const async = require('async');
+const recursiveReaddirSync = require('recursive-readdir-sync')
 
-var iotdb_commands = require('../index');
+const iotdb_commands = require('../index');
 
-var ad = require('minimist')(process.argv.slice(2), {
+const ad = require('minimist')(process.argv.slice(2), {
     boolean: ["write", "test", "all", "verbose", ],
 });
 
 // --- main ---
-var load_transporter = function(contextd, done) {
+const load_transporter = function(contextd, done) {
     done(null, _.d.compose.shallow({
-        transport: new FSTransport({
-            prefix: "samples/things",
+        transport: iotdb_transport_fs.make({
+            prefix: path.join(__dirname, "../samples/things"),
         }),
     }, contextd));
 };
 
-var run_one = function (contextd, done) {
+const run_one = function (contextd, done) {
     var in_json_path = contextd.json_path;
     if (!path.isAbsolute(in_json_path)) {
         in_json_path = "./" + in_json_path;
@@ -87,7 +87,7 @@ var run_one = function (contextd, done) {
             request: requestd,
         }, "MATCHES");
 
-        matchs.map(function(match) {
+        matchs.forEach(function(match) {
             match.request = requestd;
         });
 
@@ -102,7 +102,7 @@ var run_one = function (contextd, done) {
     });
 };
 
-var main = function() {
+const main = function() {
     var json_paths = [];
     if (ad.all) {
         var samples_dir = path.join(__dirname, "..", "samples", "tests");
