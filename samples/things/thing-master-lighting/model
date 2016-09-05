@@ -1,4 +1,5 @@
 {
+    "iot:model-id": "color-light",
     "iot:attribute": [
         {
             "@id": "#on",

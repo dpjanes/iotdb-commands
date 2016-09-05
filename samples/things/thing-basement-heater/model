@@ -1,4 +1,5 @@
 {
+    "iot:model-id": "heater",
     "iot:attribute": [
         {
             "@id": "#temperature",

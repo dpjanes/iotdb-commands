@@ -1,4 +1,5 @@
 {
+    "iot:model-id": "tv",
     "iot:attribute": [
         {
             "@id": "#on",

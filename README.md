@@ -3,13 +3,27 @@ Apply Human-Like commands to Things
 
 <img src="https://raw.githubusercontent.com/dpjanes/iotdb-homestar/master/docs/HomeStar.png" align="right" />
 
-This is an **advanced** topic. 
-[Documentation](https://homestar.io/about/transporters).
+# About
 
+This applies "human like" commands to things. For example, "turn up" the "lights".
+Note that this does _not_ do NLP processing, we assume requests are 
+already structured as so:
 
-## Random Documentation
+    {
+        "thing": "TV",
+        "action": "turn on"
+    }
 
-### Testing
+This then will look through any [transporter]() you provide to file matching things,
+based on the their current state, metadata, etc.
+
+# Vocabulary
+
+See the folder [vocabulary](vocabulary). 
+Everything is written in YAML.
+
+# Use
+
 Try it out using
 
     $ node tools/RunSamples samples/tests/action-lights-turn-up.json | bunyan
@@ -18,7 +32,7 @@ Try it out using
 The `samples` folder is where all the sample data is stored. Eventually we'll
 have sample results, so `RunSamples` will work to run test caes
 
-### Folders
+## Folders
 
 The folders
 
@@ -33,7 +47,7 @@ The folder
 are the "Things" we test with
 
 
-### Code
+# Code
 
 Input Requests look like this:
 
