@@ -3,6 +3,9 @@
     "level": 20,
     "response": "ok",
     "thing-id": "thing-main-tv",
+    "ostate_previous": {
+      "volume": 50
+    },
     "ostate": {
       "volume": 30
     },

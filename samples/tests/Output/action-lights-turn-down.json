@@ -3,6 +3,9 @@
     "level": 20,
     "response": "ok",
     "thing-id": "thing-master-lighting",
+    "ostate_previous": {
+      "brightness": null
+    },
     "ostate": {
       "brightness": 0
     },

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "level": 20,
+    "response": "the temperature is 20",
+    "thing-id": "thing-basement-heater",
+    "request": {
+      "query": "temperatur"
+    }
+  },
+  {
+    "level": 20,
+    "response": "the temperature is 70",
+    "thing-id": "thing-main-thermometer",
+    "request": {
+      "query": "temperatur"
+    }
+  },
+  {
+    "level": 20,
+    "response": "the temperature is 16",
+    "thing-id": "thing-master-ac",
+    "request": {
+      "query": "temperatur"
+    }
+  }
+]

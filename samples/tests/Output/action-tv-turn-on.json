@@ -3,8 +3,26 @@
     "level": 20,
     "response": "ok",
     "thing-id": "thing-main-tv",
+    "ostate_previous": {
+      "on": false
+    },
     "ostate": {
       "on": true
+    },
+    "request": {
+      "thing": "tv",
+      "action": "turn on"
+    }
+  },
+  {
+    "level": 20,
+    "response": "ok",
+    "thing-id": "thing-master-tv-on",
+    "ostate_previous": {
+      "on": null
+    },
+    "ostate": {
+      "on": null
     },
     "request": {
       "thing": "tv",

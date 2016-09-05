@@ -66,6 +66,7 @@ const run_one = function (contextd, done) {
     var out_json_path = path.join(out_json_path_parent, out_json_path_file);
 
     var requestd = require(in_json_path);
+    let stop = false;
 
     iotdb_commands.match(_.d.compose.shallow({
         requestd: requestd,
@@ -81,15 +82,30 @@ const run_one = function (contextd, done) {
             }
         }
 
-        logger.info({
-            // ids: _.map(ids, function(d) { return d.id }),
-            matchs: matchs,
-            request: requestd,
-        }, "MATCHES");
+        if (!contextd.ad.test) {
+            logger.info({
+                // ids: _.map(ids, function(d) { return d.id }),
+                matchs: matchs,
+                request: requestd,
+            }, "MATCHES");
+        }
 
-        matchs.forEach(function(match) {
-            match.request = requestd;
-        });
+        matchs.forEach(match => match.request = requestd);
+
+        if (contextd.ad.test) {
+            try {
+                const old = JSON.parse(fs.readFileSync(out_json_path));
+                if (!_.is.Equal(old, matchs)) {
+                    console.log("#################")
+                    console.log("#", "file changed");
+                    console.log("file:", in_json_path);
+                    console.log("old:", old);
+                    console.log("new:", matchs);
+                    console.log("#################")
+                }
+            } catch (x) {
+            }
+        }
 
         if (contextd.ad.write) {
             fs.writeFileSync(out_json_path, JSON.stringify(matchs, null, 2));
@@ -107,13 +123,13 @@ const main = function() {
     if (ad.all) {
         var samples_dir = path.join(__dirname, "..", "samples", "tests");
 
-        var names = recursiveReaddirSync(samples_dir);
+        var names = fs.readdirSync(samples_dir);
         names.map(function (name) {
             if (!name.match(/[.]json$/)) {
                 return;
             }
 
-            json_paths.push(name);
+            json_paths.push(path.join(samples_dir, name));
         });
     } else if (ad._.length) {
         json_paths = _.map(ad._, function(json_path) {

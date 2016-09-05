@@ -3,8 +3,11 @@
     "level": 20,
     "response": "ok",
     "thing-id": "thing-main-tv",
+    "ostate_previous": {
+      "mute": false
+    },
     "ostate": {
-      "mute": true
+      "mute": false
     },
     "request": {
       "thing": "tv",

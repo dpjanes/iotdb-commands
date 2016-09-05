@@ -1,0 +1,17 @@
+[
+  {
+    "level": 20,
+    "response": "ok",
+    "thing-id": "thing-main-appletv",
+    "ostate_previous": {
+      "command": null
+    },
+    "ostate": {
+      "command": null
+    },
+    "request": {
+      "thing": "apple tv",
+      "action": "mode"
+    }
+  }
+]
