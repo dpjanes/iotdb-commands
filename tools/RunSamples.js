@@ -48,7 +48,7 @@ const ad = require('minimist')(process.argv.slice(2), {
 // --- main ---
 const load_transporter = function(contextd, done) {
     done(null, _.d.compose.shallow({
-        transport: iotdb_transport_fs.make({
+        transporter: iotdb_transport_fs.make({
             prefix: path.join(__dirname, "../samples/things"),
         }),
     }, contextd));

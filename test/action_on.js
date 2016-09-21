@@ -35,7 +35,7 @@ describe("action_on", function() {
 
         iotdb_thing.match({
             verbose: false,
-            transport: transporter,
+            transporter: transporter,
             requestd: {
                 action: "on",
                 thing: null
