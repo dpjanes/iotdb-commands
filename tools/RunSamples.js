@@ -38,7 +38,6 @@ const util = require('util');
 
 const minimist = require('minimist');
 const async = require('async');
-const recursiveReaddirSync = require('recursive-readdir-sync')
 
 const iotdb_commands = require('../index');
 

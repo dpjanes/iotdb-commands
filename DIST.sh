@@ -34,8 +34,8 @@ echo "=================="
         README.md LICENSE \
         package.json \
         index.js \
-        lib/*js \
-        vocabulary/*yaml \
+        lib/*.js \
+        vocabulary/*.yaml \
         |
     ( cd "${NPM_DST}" && tar xvf - && npm publish ) || exit 1
     git commit -m "new release" package.json || exit 1
