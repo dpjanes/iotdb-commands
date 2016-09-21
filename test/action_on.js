@@ -47,39 +47,89 @@ describe("action_on", function() {
     const _select = ( matches, id ) => matches.find(d => d['thing-id'] === id)
     const _ids = ( matches ) => matches.map(d => d['thing-id']).sort()
 
-    it("all", function(done) {
-        _run({
-            action: "turn on",
-            thing: null,
-        }, (error, matches) => {
-            try {
-                assert.ok(!error, "no error expected");
-                assert.deepEqual(_ids(matches), [ 'thing-main-tv', "thing-master-lighting", 'thing-master-tv-on' ]);
-                assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: true });
-                assert.deepEqual(_select(matches, 'thing-master-lighting').ostate, { on: true });
-                assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
-                done();
-            }
-            catch (x) {
-                done(x);
-            }
+    describe("action:turn on", function() {
+        const action = "turn on";
+
+        it("thing:all", function(done) {
+            const thing = null;
+
+            _run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.deepEqual(_ids(matches), [ 'thing-main-tv', "thing-master-lighting", 'thing-master-tv-on' ]);
+                    assert.deepEqual(_select(matches, 'thing-master-lighting').ostate, { on: true });
+                    assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+        it("thing:TV", function(done) {
+            const thing = "TV";
+
+            _run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.deepEqual(_ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
+                    assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: true });
+                    assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
         });
     });
-    it("TV", function(done) {
-        _run({
-            action: "turn on",
-            thing: "TV",
-        }, (error, matches) => {
-            try {
-                assert.ok(!error, "no error expected");
-                assert.deepEqual(_ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
-                assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: true });
-                assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
-                done();
-            }
-            catch (x) {
-                done(x);
-            }
+    describe("action:turn off", function() {
+        const action = "turn off";
+
+        it("thing:all", function(done) {
+            const thing = null;
+
+            _run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.deepEqual(_ids(matches), [ 'thing-main-tv', "thing-master-lighting", "thing-master-tv-off" ]);
+                    assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: false });
+                    assert.deepEqual(_select(matches, 'thing-master-lighting').ostate, { on: false });
+                    assert.ok(_select(matches, 'thing-master-tv-off').ostate.off);
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+        it("thing:TV", function(done) {
+            const thing = "TV";
+
+            _run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.deepEqual(_ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
+                    assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: false });
+                    assert.ok(_select(matches, 'thing-master-tv-off').ostate.off);
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
         });
     });
 });

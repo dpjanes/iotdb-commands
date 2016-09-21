@@ -2,8 +2,8 @@
     "iot:model-id": "simple-tv",
     "iot:attribute": [
         {
-            "@id": "#on",
-            "iot:purpose": "iot-purpose:on.true",
+            "@id": "#off",
+            "iot:purpose": "iot-purpose:on.false",
             "iot:instantaneous": true,
             "iot:type": "iot:type.null",
             "iot:read": true,
