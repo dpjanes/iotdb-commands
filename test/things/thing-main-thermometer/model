@@ -1,0 +1,23 @@
+{
+    "iot:model-id": "thermometer",
+    "iot:attribute": [
+        {
+            "@id": "#tem",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.integer",
+            "iot:unit": "iot-unit:temperature.imperial.fahrenheit"
+        },
+        {
+            "@id": "#hum",
+            "iot:purpose": "iot-purpose:humidity",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.integer",
+            "iot:unit": "iot-unit:iot-unit:math.fraction.percent"
+        }
+    ]
+}

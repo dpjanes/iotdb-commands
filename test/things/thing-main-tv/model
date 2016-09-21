@@ -1,0 +1,52 @@
+{
+    "iot:model-id": "tv",
+    "iot:attribute": [
+        {
+            "@id": "#on",
+            "iot:purpose": "iot-purpose:on",
+            "iot:type": "iot:type.boolean",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#mute",
+            "iot:purpose": "iot-purpose:mute",
+            "iot:type": "iot:type.boolean",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#channel",
+            "iot:purpose": "iot-purpose:channel",
+            "iot:type": "iot:type.integer",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#volume",
+            "iot:purpose": "iot-purpose:volume",
+            "iot:type": "iot:type.integer",
+            "iot:minimum": 0,
+            "iot:maximum": 100,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#band",
+            "iot:purpose": "iot-purpose:band",
+            "iot:type": "iot:type.string",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "iot:thing-id": "thing-doorbell",
+    "iot:model-id": "model-contact-switch",
+    "schema:name": "Doorbell",
+    "iot:facet": [ "iot-facet:sensor.contact", "iot-facet:sensor" ],
+    "iot:zone": [ "Front Porch", "Foyer" ]
+}

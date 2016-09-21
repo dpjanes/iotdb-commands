@@ -1,0 +1,24 @@
+{
+    "iot:model-id": "heater",
+    "iot:attribute": [
+        {
+            "@id": "#temperature",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+        },
+        {
+            "@id": "#set-point",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "iot:model-id": "ac",
+    "iot:attribute": [
+        {
+            "@id": "#t",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+        }
+    ]
+}

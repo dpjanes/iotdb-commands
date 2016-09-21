@@ -1,0 +1,7 @@
+{
+    "iot:thing-id": "thing-master-lighting",
+    "iot:model-id": "model-03",
+    "schema:name": "Lights",
+    "iot:facet": "iot-facet:lighting.light",
+    "iot:zone": [ "Master Bedroom" ]
+}

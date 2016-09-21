@@ -24,6 +24,8 @@
 
 "use strict";
 
+const path = require("path");
+
 const iotdb_transport_fs = require("iotdb-transport-fs");
 const iotdb_transport_memory = require("iotdb-transport-memory");
 
@@ -39,7 +41,7 @@ const make = () => {
     const transporter_memory = iotdb_transport_memory.make();
     transporter_memory.monitor(transporter_fs);
 
-    return transport_memory;
+    return transporter_memory;
 };
 
 /**

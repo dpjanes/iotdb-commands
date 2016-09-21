@@ -1,0 +1,7 @@
+{
+    "iot:thing-id": "thing-main-tv",
+    "iot:model-id": "model-tv",
+    "schema:name": "TV",
+    "iot:facet": [ "iot-facet:media", "iot-facet:media.tv" ],
+    "iot:zone": [ "Main Floor", "Living Room" ]
+}

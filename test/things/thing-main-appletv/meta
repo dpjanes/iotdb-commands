@@ -1,0 +1,6 @@
+{
+    "iot:thing-id": "thing-main-appletv",
+    "iot:model-id": "command-appletv",
+    "schema:name": "Apple TV",
+    "iot:zone": [ "Main Floor", "Living Room" ]
+}
