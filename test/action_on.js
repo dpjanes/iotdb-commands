@@ -27,8 +27,21 @@
 const assert = require("assert");
 const helpers = require("./helpers");
 
+const iotdb_thing = require("..");
+
 describe("action_on", function() {
-    it("everything", function() {
+    it("everything", function(done) {
         const transporter = helpers.transport.make();
+
+        iotdb_thing.match({
+            verbose: false,
+            transport: transporter,
+            requestd: {
+                action: "on",
+                thing: null
+            },
+        }, (error, matches) => {
+            done();
+        });
     });
 });
