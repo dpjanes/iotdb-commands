@@ -31,7 +31,7 @@ const iotdb_transport_memory = require("iotdb-transport-memory");
 
 let transporter_fs;
 
-const make = () => {
+const create = (done) => {
     if (!transporter_fs) {
         transporter_fs = iotdb_transport_fs.make({
             "prefix": path.join(__dirname, "..", "things"),
@@ -39,12 +39,13 @@ const make = () => {
     }
 
     const transporter_memory = iotdb_transport_memory.make();
-    transporter_memory.monitor(transporter_fs);
-
-    return transporter_memory;
+    transporter_memory
+        .copy(transporter_fs)
+        .then(() => done(null, transporter_memory))
+        .catch(error => done(error));
 };
 
 /**
  *  API
  */
-exports.make = make;
+exports.create = create;

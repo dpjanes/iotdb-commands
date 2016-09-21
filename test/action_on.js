@@ -30,18 +30,56 @@ const helpers = require("./helpers");
 const iotdb_thing = require("..");
 
 describe("action_on", function() {
-    it("everything", function(done) {
-        const transporter = helpers.transport.make();
+    const _run = ( requestd, done ) => {
+        helpers.transport.create((error, transporter) => {
+            if (error) {
+                return done(error);
+            }
 
-        iotdb_thing.match({
-            verbose: false,
-            transporter: transporter,
-            requestd: {
-                action: "on",
-                thing: null
-            },
+            iotdb_thing.match({
+                verbose: false,
+                transporter: transporter,
+                requestd: requestd,
+            }, done);
+        });
+    };
+
+    const _select = ( matches, id ) => matches.find(d => d['thing-id'] === id)
+    const _ids = ( matches ) => matches.map(d => d['thing-id']).sort()
+
+    it("all", function(done) {
+        _run({
+            action: "turn on",
+            thing: null,
         }, (error, matches) => {
-            done();
+            try {
+                assert.ok(!error, "no error expected");
+                assert.deepEqual(_ids(matches), [ 'thing-main-tv', "thing-master-lighting", 'thing-master-tv-on' ]);
+                assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: true });
+                assert.deepEqual(_select(matches, 'thing-master-lighting').ostate, { on: true });
+                assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
+                done();
+            }
+            catch (x) {
+                done(x);
+            }
+        });
+    });
+    it("TV", function(done) {
+        _run({
+            action: "turn on",
+            thing: "TV",
+        }, (error, matches) => {
+            try {
+                assert.ok(!error, "no error expected");
+                assert.deepEqual(_ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
+                assert.deepEqual(_select(matches, 'thing-main-tv').ostate, { on: true });
+                assert.ok(_select(matches, 'thing-master-tv-on').ostate.on);
+                done();
+            }
+            catch (x) {
+                done(x);
+            }
         });
     });
 });
