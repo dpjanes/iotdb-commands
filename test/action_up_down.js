@@ -39,13 +39,45 @@ describe("action_up_down", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
-                    console.log(matches);
                     assert.ok(!error, "no error expected");
-                    /*
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', "thing-master-lighting", 'thing-master-tv-on' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
-                    */
+                    assert.strictEqual(matches.length, 6);
+
+                    {
+                        const r_thing = helpers.select(matches, 'thing-basement-heater');
+                        const r_value = r_thing.ostate.temperature;
+                        const x_value = 20.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-thermometer');
+                        const r_value = r_thing.ostate.tem;
+                        const x_value = 70.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-tv');
+                        const r_value = r_thing.ostate.volume;
+                        const x_value = 70;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-ac');
+                        const r_value = r_thing.ostate.t;
+                        const x_value = 16.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-lighting');
+                        const r_value = r_thing.ostate.brightness;
+                        const x_value = 20;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-tv-on');
+                        const r_value = r_thing.ostate['volume-up'];
+                        assert.ok(r_value);
+                    }
+
                     done();
                 }
                 catch (x) {
@@ -61,13 +93,19 @@ describe("action_up_down", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
-                    console.log(matches);
                     assert.ok(!error, "no error expected");
-                    /*
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
-                    */
+                    assert.strictEqual(matches.length, 2);
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-tv');
+                        const r_value = r_thing.ostate.volume;
+                        const x_value = 70;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-tv-on');
+                        const r_value = r_thing.ostate['volume-up'];
+                        assert.ok(r_value);
+                    }
                     done();
                 }
                 catch (x) {
@@ -77,3 +115,4 @@ describe("action_up_down", function() {
         });
     });
 });
+

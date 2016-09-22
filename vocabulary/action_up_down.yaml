@@ -17,6 +17,30 @@ do:
 ---
 action: "turn up"
 meta:
+    iot:facet: ":lighting.light"
+do:
+    iot:purpose: ":brightness.up"
+---
+action: "turn down"
+meta:
+    iot:facet: ":lighting.light"
+do:
+    iot:purpose: ":brightness.down"
+---
+action: "turn up"
+meta:
+    iot:facet: ":media"
+do:
+    iot:purpose: ":volume.up"
+---
+action: "turn down"
+meta:
+    iot:facet: ":media"
+do:
+    iot:purpose: ":volume.down"
+---
+action: "turn up"
+meta:
     iot:facet: ":media"
 do:
     iot:purpose: ":volume"
