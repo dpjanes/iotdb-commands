@@ -44,6 +44,10 @@
             "@id": "#band",
             "iot:purpose": "iot-purpose:band",
             "iot:type": "iot:type.string",
+            "iot:enumeration": {
+               "iot-purpose:band.am": "AM",
+               "iot-purpose:band.fm": "FM"
+            },
             "iot:read": true,
             "iot:write": true,
             "iot:sensor": true,
@@ -51,3 +55,4 @@
         }
     ]
 }
+
