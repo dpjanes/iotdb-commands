@@ -24,4 +24,30 @@
 
 "use strict";
 
-exports.transport = require("./transport");
+const iotdb_thing = require("../..");
+const transport = require("./transport");
+
+const run = ( requestd, done ) => {
+    transport.create((error, transporter) => {
+        if (error) {
+            return done(error);
+        }
+
+        iotdb_thing.match({
+            verbose: false,
+            transporter: transporter,
+            requestd: requestd,
+        }, done);
+    });
+};
+
+const select = ( matches, id ) => matches.find(d => d['thing-id'] === id)
+const ids = ( matches ) => matches.map(d => d['thing-id']).sort()
+
+/*
+ *  API
+ */
+exports.transport = transport;
+exports.run = run;
+exports.select = select;
+exports.ids = ids;

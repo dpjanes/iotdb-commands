@@ -1,9 +1,9 @@
 /*
- *  actions_on.js
+ *  action_up_down.js
  *
  *  David Janes
  *  IOTDB.org
- *  2016-09-21
+ *  2016-09-22
  *
  *  Copyright [2013-2016] [David P. Janes]
  *
@@ -27,9 +27,9 @@ const helpers = require("./helpers");
 
 const iotdb_thing = require("..");
 
-describe("action_on", function() {
+describe("action_up_down", function() {
     describe("action:turn on", function() {
-        const action = "turn on";
+        const action = "turn up";
 
         it("thing:all", function(done) {
             const thing = null;
@@ -39,10 +39,13 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log(matches);
                     assert.ok(!error, "no error expected");
+                    /*
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', "thing-master-lighting", 'thing-master-tv-on' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: true });
                     assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
+                    */
                     done();
                 }
                 catch (x) {
@@ -58,53 +61,13 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log(matches);
                     assert.ok(!error, "no error expected");
+                    /*
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: true });
                     assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
-                    done();
-                }
-                catch (x) {
-                    done(x);
-                }
-            });
-        });
-    });
-    describe("action:turn off", function() {
-        const action = "turn off";
-
-        it("thing:all", function(done) {
-            const thing = null;
-
-            helpers.run({
-                action: action,
-                thing: thing,
-            }, (error, matches) => {
-                try {
-                    assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', "thing-master-lighting", "thing-master-tv-off" ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
-                    done();
-                }
-                catch (x) {
-                    done(x);
-                }
-            });
-        });
-        it("thing:TV", function(done) {
-            const thing = "TV";
-
-            helpers.run({
-                action: action,
-                thing: thing,
-            }, (error, matches) => {
-                try {
-                    assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
+                    */
                     done();
                 }
                 catch (x) {
