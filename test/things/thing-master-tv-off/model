@@ -20,6 +20,16 @@
             "iot:write": true,
             "iot:sensor": false,
             "iot:actuator": false
+        },
+        {
+            "@id": "#unmute",
+            "iot:purpose": "iot-purpose:mute.false",
+            "iot:instantaneous": true,
+            "iot:type": "iot:type.null",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": false,
+            "iot:actuator": false
         }
     ]
 }
