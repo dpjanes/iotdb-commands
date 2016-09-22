@@ -1,0 +1,7 @@
+{
+    "iot:thing-id": "thing-main-radio",
+    "iot:model-id": "model-radio",
+    "schema:name": "Radio",
+    "iot:facet": [ "iot-facet:media", "iot-facet:media.radio" ],
+    "iot:zone": [ "Main Floor", "Living Room" ]
+}

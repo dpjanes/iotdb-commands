@@ -1,9 +1,9 @@
 /*
- *  actions_on.js
+ *  action_mute.js
  *
  *  David Janes
  *  IOTDB.org
- *  2016-09-21
+ *  2016-09-22
  *
  *  Copyright [2013-2016] [David P. Janes]
  *
@@ -27,9 +27,9 @@ const helpers = require("./helpers");
 
 const iotdb_thing = require("..");
 
-describe("action_on", function() {
-    describe("action:turn on", function() {
-        const action = "turn on";
+describe("action_mute", function() {
+    describe("action:mute", function() {
+        const action = "mute";
 
         it("thing:all", function(done) {
             const thing = null;
@@ -40,9 +40,8 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(matches.length, 4);
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
+                    assert.deepEqual(matches.length, 3);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.mute);
                     done();
                 }
                 catch (x) {
@@ -59,9 +58,9 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
+                    assert.deepEqual(matches.length, 2);
+                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate.mute, true);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.mute);
                     done();
                 }
                 catch (x) {
@@ -70,8 +69,8 @@ describe("action_on", function() {
             });
         });
     });
-    describe("action:turn off", function() {
-        const action = "turn off";
+    describe("action:unmute", function() {
+        const action = "unmute";
 
         it("thing:all", function(done) {
             const thing = null;
@@ -82,10 +81,10 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(matches.length, 4);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
+                    assert.deepEqual(matches.length, 3);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.unmute);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-tv').ostate.mute, false);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').ostate.mute, false);
                     done();
                 }
                 catch (x) {
@@ -93,8 +92,8 @@ describe("action_on", function() {
                 }
             });
         });
-        it("thing:TV", function(done) {
-            const thing = "TV";
+        it("thing:Radio", function(done) {
+            const thing = "Radio";
 
             helpers.run({
                 action: action,
@@ -102,9 +101,8 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
+                    assert.deepEqual(matches.length, 1);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').ostate.mute, false);
                     done();
                 }
                 catch (x) {

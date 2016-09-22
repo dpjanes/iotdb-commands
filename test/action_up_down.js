@@ -40,7 +40,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 6);
+                    assert.strictEqual(matches.length, 7);
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
@@ -126,7 +126,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 6);
+                    assert.strictEqual(matches.length, 7);
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');

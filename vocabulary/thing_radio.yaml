@@ -1,0 +1,8 @@
+---
+thing: "radio"
+meta:
+    iot:facet: ":media.radio"
+---
+thing: "radio"
+meta:
+    schema:name: "Radio"
