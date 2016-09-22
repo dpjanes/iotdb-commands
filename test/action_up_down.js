@@ -114,5 +114,90 @@ describe("action_up_down", function() {
             });
         });
     });
-});
+    describe("action:turn down", function() {
+        const action = "turn down";
 
+        it("thing:all", function(done) {
+            const thing = null;
+
+            helpers.run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.strictEqual(matches.length, 6);
+
+                    {
+                        const r_thing = helpers.select(matches, 'thing-basement-heater');
+                        const r_value = r_thing.ostate.temperature;
+                        const x_value = 19.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-thermometer');
+                        const r_value = r_thing.ostate.tem;
+                        const x_value = 69.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-tv');
+                        const r_value = r_thing.ostate.volume;
+                        const x_value = 30;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-ac');
+                        const r_value = r_thing.ostate.t;
+                        const x_value = 15.5;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-lighting');
+                        const r_value = r_thing.ostate.brightness;
+                        const x_value = 0;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-tv-off');
+                        const r_value = r_thing.ostate['volume-down'];
+                        assert.ok(r_value);
+                    }
+
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+        it("thing:TV", function(done) {
+            const thing = "TV";
+
+            helpers.run({
+                action: action,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+                    assert.strictEqual(matches.length, 2);
+                    {
+                        const r_thing = helpers.select(matches, 'thing-main-tv');
+                        const r_value = r_thing.ostate.volume;
+                        const x_value = 30;
+                        assert.deepEqual(r_value, x_value);
+                    }
+                    {
+                        const r_thing = helpers.select(matches, 'thing-master-tv-off');
+                        const r_value = r_thing.ostate['volume-down'];
+                        assert.ok(r_value);
+                    }
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+    });
+});
