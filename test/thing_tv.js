@@ -44,4 +44,20 @@ describe("thing_tv", function() {
             }
         });
     });
+    it("television", function(done) {
+        const thing = "television";
+
+        helpers.run({
+            thing: thing,
+            query: "list",
+        }, (error, matches) => {
+            try {
+                assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off', 'thing-master-tv-on' ]);
+                done();
+            }
+            catch (x) {
+                done(x);
+            }
+        });
+    });
 });

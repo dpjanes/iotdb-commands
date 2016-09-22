@@ -1,8 +1,12 @@
 ---
-thing: "tv"
+thing: 
+    - "tv"
+    - "television"
 meta:
     iot:facet: ":media.tv"
 ---
-thing: "tv"
+thing: 
+    - "tv"
+    - "television"
 meta:
     schema:name: "TV"
