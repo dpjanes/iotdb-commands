@@ -1,0 +1,4 @@
+---
+action: "forget"
+do:
+    rule: remove
