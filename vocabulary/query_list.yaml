@@ -1,0 +1,8 @@
+---
+query: "list"
+response: "{{ name }}"
+istate: {}
+---
+query: "list"
+response: "{{ name }}"
+istate: {}
