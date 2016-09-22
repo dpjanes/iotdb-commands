@@ -51,6 +51,40 @@ describe("action_band", function() {
                     }
                 });
             });
+            it("band:am", function(done) {
+                const argument = "am"
+
+                helpers.run({
+                    action: action,
+                    thing: thing,
+                    argument: argument,
+                }, (error, matches) => {
+                    try {
+                        console.log(matches);
+                        done();
+                    }
+                    catch (x) {
+                        done(x);
+                    }
+                });
+            });
+            it("band:fm", function(done) {
+                const argument = "fm"
+
+                helpers.run({
+                    action: action,
+                    thing: thing,
+                    argument: argument,
+                }, (error, matches) => {
+                    try {
+                        console.log(matches);
+                        done();
+                    }
+                    catch (x) {
+                        done(x);
+                    }
+                });
+            });
         });
     });
 });
