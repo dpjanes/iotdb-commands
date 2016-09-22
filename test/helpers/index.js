@@ -41,8 +41,8 @@ const run = ( requestd, done ) => {
     });
 };
 
-const select = ( matches, id ) => matches.find(d => d['thing-id'] === id)
-const ids = ( matches ) => matches.map(d => d['thing-id']).sort()
+const select = ( matches, id ) => matches.find(d => d.id === id)
+const ids = ( matches ) => matches.map(d => d.id).sort()
 
 /*
  *  API
