@@ -35,6 +35,26 @@ describe("action_band", function() {
             const thing = null;
 
             it("band:HDMI", function(done) {
+                const argument = "hdmi"
+
+                helpers.run({
+                    action: action,
+                    thing: thing,
+                    argument: argument,
+                }, (error, matches) => {
+                    try {
+                        assert.ok(!error, "no error expected");
+                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate.band, 'iot-purpose:band.hdmi');
+                        // console.log(matches);
+                        done();
+                    }
+                    catch (x) {
+                        done(x);
+                    }
+                });
+            });
+            it("band:HDMI 2", function(done) {
                 const argument = "hdmi 2"
 
                 helpers.run({
@@ -43,7 +63,9 @@ describe("action_band", function() {
                     argument: argument,
                 }, (error, matches) => {
                     try {
-                        console.log(matches);
+                        // console.log(matches);
+                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate.band, 'iot-purpose:band.hdmi.2');
                         done();
                     }
                     catch (x) {
@@ -60,7 +82,9 @@ describe("action_band", function() {
                     argument: argument,
                 }, (error, matches) => {
                     try {
-                        console.log(matches);
+                        // console.log(matches);
+                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.select(matches, 'thing-main-radio').ostate.band, 'iot-purpose:band.am');
                         done();
                     }
                     catch (x) {
@@ -77,7 +101,29 @@ describe("action_band", function() {
                     argument: argument,
                 }, (error, matches) => {
                     try {
-                        console.log(matches);
+                        // console.log(matches);
+                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.select(matches, 'thing-main-radio').ostate.band, 'iot-purpose:band.fm');
+                        done();
+                    }
+                    catch (x) {
+                        done(x);
+                    }
+                });
+            });
+            it("band:pandora", function(done) {
+                const argument = "pandora"
+
+                helpers.run({
+                    action: action,
+                    thing: thing,
+                    argument: argument,
+                }, (error, matches) => {
+                    try {
+                        // console.log(matches);
+                        assert.deepEqual(matches.length, 2);
+                        assert.deepEqual(helpers.select(matches, 'thing-main-radio').ostate.band, 'iot-purpose:band.service.pandora');
+                        assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate.band, 'iot-purpose:band.service.pandora');
                         done();
                     }
                     catch (x) {
@@ -88,3 +134,4 @@ describe("action_band", function() {
         });
     });
 });
+

@@ -46,7 +46,8 @@
             "iot:type": "iot:type.string",
             "iot:enumeration": {
                "iot-purpose:band.am": "AM",
-               "iot-purpose:band.fm": "FM"
+               "iot-purpose:band.fm": "FM",
+               "iot-purpose:band.service.pandora": "Pandora"
             },
             "iot:read": true,
             "iot:write": true,

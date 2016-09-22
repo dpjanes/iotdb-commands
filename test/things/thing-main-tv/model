@@ -43,6 +43,15 @@
             "@id": "#band",
             "iot:purpose": "iot-purpose:band",
             "iot:type": "iot:type.string",
+            "iot:enumeration": [
+               "iot-purpose:band.hdmi",
+               "iot-purpose:band.hdmi.1",
+               "iot-purpose:band.hdmi.2",
+               "iot-purpose:band.hdmi.3",
+               "iot-purpose:band.tv",
+               "iot-purpose:band.cable",
+               "iot-purpose:band.service.pandora"
+            ],
             "iot:read": true,
             "iot:write": true,
             "iot:sensor": true,
