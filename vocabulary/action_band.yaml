@@ -1,0 +1,84 @@
+---
+action: "switch to"
+argument: "hdmi"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.hdmi"
+---
+action: "switch to"
+argument: "hdmi 1"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.hdmi"
+---
+action: "switch to"
+argument: "hdmi 1"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.hdmi.1"
+---
+action: "switch to"
+argument: "hdmi 2"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.hdmi.2"
+---
+action: "switch to"
+argument: "hdmi 3"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.hdmi.3"
+---
+action: "switch to"
+argument: "tv"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.tv"
+---
+action: "switch to"
+argument: "apple tv"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.apple tv"
+---
+action: "switch to"
+argument: "am"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.am"
+---
+action: "switch to"
+argument: "fm"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.fm"
+---
+action: "switch to"
+argument: "netflix"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.service.netflix"
+---
+action: "switch to"
+argument: "spotify"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.service.spotify"
+---
+action: "switch to"
+argument: "pandora"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.service.pandora"
+---
+action: "switch to"
+argument: "youtube"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.service.youtube"
+---
+action: "switch to"
+argument: "crackle"
+do:
+    iot:purpose: ":band"
+    value: "iot-purpose:band.service.crackle"

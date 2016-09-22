@@ -3,8 +3,3 @@ action: "mode"
 do:
     iot:purpose: ":command"
     iot:facet: ":mode"
----
-action: "switch to"
-do:
-    iot:purpose: ":command"
-    iot:facet: ":mode"
