@@ -1,12 +1,12 @@
 ---
 query: "on"
 response: "{{ name }} is {{ value|binary('off', 'on') }}"
-istate:
+match:
     iot:purpose: ":on"
     value: true
 ---
 query: "off"
 response: "{{ name }} is {{ value|binary('off', 'on') }}"
-istate:
+match:
     iot:purpose: ":on"
     value: false

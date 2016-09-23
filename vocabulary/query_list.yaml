@@ -3,4 +3,4 @@ query:
     - list
     - list things
 response: "{{ name }}"
-istate: {}
+match: {}

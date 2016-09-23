@@ -1,5 +1,5 @@
 ---
 query: "temperature"
 response: "the temperature is {{ value }}"
-istate:
+match:
     iot:purpose: ":temperature"
