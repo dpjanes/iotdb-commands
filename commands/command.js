@@ -63,8 +63,8 @@ exports.run = ad => {
         process.exit()
     }
 
-    if (!ad.action) {
-        return _die("error: --action is required");
+    if (!ad.action && !ad.query) {
+        return _die("error: --action or --query are required");
     }
 
     const cfgd = _.first(configuration());
@@ -77,6 +77,8 @@ exports.run = ad => {
         requestd: {
             action: ad.action || null,
             thing: ad.thing || null,
+            query: ad.query || null,
+            argument: ad.argument || ad.band || null,
         },
     }, (error, matches) => {
         if (error) {
@@ -85,15 +87,30 @@ exports.run = ad => {
         }
 
         matches
+            .filter(matchd => matchd.id)
             .forEach(matchd => {
                 let band;
                 let value;
-                if (matchd.id && matchd.ostate) {
+                if (matchd.ostate) {
                     band = "ostate";
                     value = matchd.ostate;
-                } else if (matchd.id && matchd.meta) {
+                } else if (matchd.meta) {
                     band = "meta";
                     value = matchd.meta;
+                } else if (matchd.remove) {
+                    out_transporter.remove({
+                        id: matchd.id,
+                    }).subscribe(
+                        () => {
+                            console.log("+", "removed");
+                            console.log("id", matchd.id);
+                            console.log();
+                        }
+                    )
+                    return;
+                } else if (matchd.response) {
+                    console.log("+", matchd.response);
+                    return;
                 } else {
                     console.log("ARGGGG", matchd);
                     return;

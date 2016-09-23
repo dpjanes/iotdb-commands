@@ -1,8 +1,6 @@
 ---
-query: "list"
-response: "{{ name }}"
-istate: {}
----
-query: "list"
+query: 
+    - list
+    - list things
 response: "{{ name }}"
 istate: {}
