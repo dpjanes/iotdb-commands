@@ -44,37 +44,37 @@ describe("action_up_down", function() {
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
-                        const r_value = r_thing.ostate.temperature;
+                        const r_value = r_thing.value.temperature;
                         const x_value = 20.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-main-thermometer');
-                        const r_value = r_thing.ostate.tem;
+                        const r_value = r_thing.value.tem;
                         const x_value = 70.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
-                        const r_value = r_thing.ostate.volume;
+                        const r_value = r_thing.value.volume;
                         const x_value = 70;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-ac');
-                        const r_value = r_thing.ostate.t;
+                        const r_value = r_thing.value.t;
                         const x_value = 16.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-lighting');
-                        const r_value = r_thing.ostate.brightness;
+                        const r_value = r_thing.value.brightness;
                         const x_value = 20;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-tv-on');
-                        const r_value = r_thing.ostate['volume-up'];
+                        const r_value = r_thing.value['volume-up'];
                         assert.ok(r_value);
                     }
 
@@ -97,13 +97,13 @@ describe("action_up_down", function() {
                     assert.strictEqual(matches.length, 2);
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
-                        const r_value = r_thing.ostate.volume;
+                        const r_value = r_thing.value.volume;
                         const x_value = 70;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-tv-on');
-                        const r_value = r_thing.ostate['volume-up'];
+                        const r_value = r_thing.value['volume-up'];
                         assert.ok(r_value);
                     }
                     done();
@@ -130,37 +130,37 @@ describe("action_up_down", function() {
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
-                        const r_value = r_thing.ostate.temperature;
+                        const r_value = r_thing.value.temperature;
                         const x_value = 19.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-main-thermometer');
-                        const r_value = r_thing.ostate.tem;
+                        const r_value = r_thing.value.tem;
                         const x_value = 69.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
-                        const r_value = r_thing.ostate.volume;
+                        const r_value = r_thing.value.volume;
                         const x_value = 30;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-ac');
-                        const r_value = r_thing.ostate.t;
+                        const r_value = r_thing.value.t;
                         const x_value = 15.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-lighting');
-                        const r_value = r_thing.ostate.brightness;
+                        const r_value = r_thing.value.brightness;
                         const x_value = 0;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-tv-off');
-                        const r_value = r_thing.ostate['volume-down'];
+                        const r_value = r_thing.value['volume-down'];
                         assert.ok(r_value);
                     }
 
@@ -183,13 +183,13 @@ describe("action_up_down", function() {
                     assert.strictEqual(matches.length, 2);
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
-                        const r_value = r_thing.ostate.volume;
+                        const r_value = r_thing.value.volume;
                         const x_value = 30;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
                         const r_thing = helpers.select(matches, 'thing-master-tv-off');
-                        const r_value = r_thing.ostate['volume-down'];
+                        const r_value = r_thing.value['volume-down'];
                         assert.ok(r_value);
                     }
                     done();

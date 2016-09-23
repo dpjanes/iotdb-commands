@@ -41,8 +41,8 @@ describe("action_on", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 4);
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
+                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value, { on: true });
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').value.on);
                     done();
                 }
                 catch (x) {
@@ -60,8 +60,8 @@ describe("action_on", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: true });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.on);
+                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: true });
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').value.on);
                     done();
                 }
                 catch (x) {
@@ -83,9 +83,9 @@ describe("action_on", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 4);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
+                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });
+                    assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value, { on: false });
+                    assert.ok(helpers.select(matches, 'thing-master-tv-off').value.off);
                     done();
                 }
                 catch (x) {
@@ -103,8 +103,8 @@ describe("action_on", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate, { on: false });
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.off);
+                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });
+                    assert.ok(helpers.select(matches, 'thing-master-tv-off').value.off);
                     done();
                 }
                 catch (x) {

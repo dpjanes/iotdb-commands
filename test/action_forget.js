@@ -40,7 +40,7 @@ describe("action_forget", function() {
             try {
                 assert.ok(!error, "no error expected");
                 assert.ok(matches.length);
-                assert.strictEqual(matches.filter(md => md.remove).length, matches.length);
+                assert.strictEqual(matches.filter(md => md.action === "remove").length, matches.length);
                 done();
             }
             catch (x) {

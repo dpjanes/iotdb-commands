@@ -41,7 +41,7 @@ describe("action_mute", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 3);
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.mute);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').value.mute);
                     done();
                 }
                 catch (x) {
@@ -59,8 +59,8 @@ describe("action_mute", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 2);
-                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').ostate.mute, true);
-                    assert.ok(helpers.select(matches, 'thing-master-tv-on').ostate.mute);
+                    assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.mute, true);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-on').value.mute);
                     done();
                 }
                 catch (x) {
@@ -82,9 +82,9 @@ describe("action_mute", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 3);
-                    assert.ok(helpers.select(matches, 'thing-master-tv-off').ostate.unmute);
-                    assert.strictEqual(helpers.select(matches, 'thing-main-tv').ostate.mute, false);
-                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').ostate.mute, false);
+                    assert.ok(helpers.select(matches, 'thing-master-tv-off').value.unmute);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-tv').value.mute, false);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').value.mute, false);
                     done();
                 }
                 catch (x) {
@@ -102,7 +102,7 @@ describe("action_mute", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(matches.length, 1);
-                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').ostate.mute, false);
+                    assert.strictEqual(helpers.select(matches, 'thing-main-radio').value.mute, false);
                     done();
                 }
                 catch (x) {

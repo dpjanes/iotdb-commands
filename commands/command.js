@@ -89,15 +89,22 @@ exports.run = ad => {
         matches
             .filter(matchd => matchd.id)
             .forEach(matchd => {
-                let band;
-                let value;
-                if (matchd.ostate) {
-                    band = "ostate";
-                    value = matchd.ostate;
-                } else if (matchd.meta) {
-                    band = "meta";
-                    value = matchd.meta;
-                } else if (matchd.remove) {
+                if (matchd.action === "update") {
+                    out_transporter.put({
+                        id: matchd.id,
+                        band: matchd.band,
+                        value: matchd.value,
+                    }).subscribe(
+                        ok => {
+                            console.log("+", "updated");
+                            console.log("id", matchd.id);
+                            _explain(matchd.band, matchd.value).forEach(line => console.log(line));
+                            _explain("meta", matchd.thing.meta).forEach(line => console.log(line));
+                            console.log();
+                        },
+                        error => console.log("#", matchd.id, _.error.message(error))
+                    )
+                } else if (matchd.action === "remove") {
                     out_transporter.remove({
                         id: matchd.id,
                     }).subscribe(
@@ -115,29 +122,6 @@ exports.run = ad => {
                     console.log("ARGGGG", matchd);
                     return;
                 }
-
-                out_transporter.put({
-                    id: matchd.id,
-                    band: band,
-                    value: value,
-                }).subscribe(
-                    ok => {
-                        out_transporter.get({
-                            id: matchd.id,
-                            band: "meta"
-                        }).subscribe(
-                            gd => {
-                                console.log("+", "updated");
-                                console.log("id", matchd.id);
-                                _explain(band, value).forEach(line => console.log(line));
-                                _explain("meta", gd.value).forEach(line => console.log(line));
-                                console.log();
-                            }
-                        );
-                    },
-                    error => console.log("#", matchd.id, _.error.message(error))
-                )
             });
     });
-
 };
