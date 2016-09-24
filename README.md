@@ -53,6 +53,15 @@ List all the Things that are on
 
 A special action is `list`, which will list everything
 
+## Zones
+
+Requests can be specifically restricted to a Zone
+
+    {
+        "thing": "TV",
+        "action": "off",
+        "zone": "Second Floor",
+    }
 
 ## Code
 
