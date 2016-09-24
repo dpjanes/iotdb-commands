@@ -2,25 +2,143 @@
   {
     "level": 20,
     "response": "the temperature is 20",
-    "thing-id": "thing-basement-heater",
+    "id": "thing-basement-heater",
+    "thing": {
+      "id": "thing-basement-heater",
+      "istate": {
+        "temperature": 20,
+        "set-point": 21
+      },
+      "meta": {
+        "iot:thing-id": "thing-basement-heater",
+        "iot:model-id": "model-01",
+        "schema:name": "Heater",
+        "iot:facet": [
+          "iot-facet:climate",
+          "iot-facet:climate.heating"
+        ],
+        "iot:zone": "Basement"
+      },
+      "model": {
+        "iot:model-id": "heater",
+        "iot:attribute": [
+          {
+            "@id": "#temperature",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+          },
+          {
+            "@id": "#set-point",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+          }
+        ]
+      }
+    },
+    "action": "response",
     "request": {
-      "query": "temperatur"
+      "query": "temperature"
     }
   },
   {
     "level": 20,
     "response": "the temperature is 70",
-    "thing-id": "thing-main-thermometer",
+    "id": "thing-main-thermometer",
+    "thing": {
+      "id": "thing-main-thermometer",
+      "istate": {
+        "tem": 70,
+        "hum": 30
+      },
+      "meta": {
+        "iot:thing-id": "thing-main-thermometer",
+        "iot:model-id": "model-05",
+        "schema:name": "Thermometer",
+        "iot:facet": [
+          "iot-facet:sensor",
+          "iot-facet:sensor.temperature",
+          "iot-facet:sensor.humidity"
+        ],
+        "iot:zone": "Main Floor"
+      },
+      "model": {
+        "iot:model-id": "thermometer",
+        "iot:attribute": [
+          {
+            "@id": "#tem",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.integer",
+            "iot:unit": "iot-unit:temperature.imperial.fahrenheit"
+          },
+          {
+            "@id": "#hum",
+            "iot:purpose": "iot-purpose:humidity",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.integer",
+            "iot:unit": "iot-unit:iot-unit:math.fraction.percent"
+          }
+        ]
+      }
+    },
+    "action": "response",
     "request": {
-      "query": "temperatur"
+      "query": "temperature"
     }
   },
   {
     "level": 20,
     "response": "the temperature is 16",
-    "thing-id": "thing-master-ac",
+    "id": "thing-master-ac",
+    "thing": {
+      "id": "thing-master-ac",
+      "istate": {
+        "t": 16
+      },
+      "meta": {
+        "iot:thing-id": "thing-master-ac",
+        "iot:model-id": "model-02",
+        "schema:name": "Air Conditioner",
+        "iot:facet": [
+          "iot-facet:climate",
+          "iot-facet:climate.cooling"
+        ],
+        "iot:zone": [
+          "Second Floor",
+          "Master Bedroom"
+        ]
+      },
+      "model": {
+        "iot:model-id": "ac",
+        "iot:attribute": [
+          {
+            "@id": "#t",
+            "iot:purpose": "iot-purpose:temperature",
+            "iot:read": true,
+            "iot:sensor": true,
+            "iot:actuator": false,
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:temperature.si.celsius"
+          }
+        ]
+      }
+    },
+    "action": "response",
     "request": {
-      "query": "temperatur"
+      "query": "temperature"
     }
   }
 ]

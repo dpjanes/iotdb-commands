@@ -2,15 +2,65 @@
   {
     "level": 20,
     "response": "ok",
-    "thing-id": "thing-master-lighting",
-    "ostate_previous": {
-      "brightness": null
+    "id": "thing-master-lighting",
+    "thing": {
+      "id": "thing-master-lighting",
+      "istate": {
+        "on": true
+      },
+      "meta": {
+        "iot:thing-id": "thing-master-lighting",
+        "iot:model-id": "model-03",
+        "schema:name": "Lights",
+        "iot:facet": "iot-facet:lighting.light",
+        "iot:zone": [
+          "Master Bedroom"
+        ]
+      },
+      "model": {
+        "iot:model-id": "color-light",
+        "iot:attribute": [
+          {
+            "@id": "#on",
+            "iot:purpose": "iot-purpose:on",
+            "iot:type": "iot:type.boolean",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#brightness",
+            "iot:purpose": "iot-purpose:brightness",
+            "iot:type": "iot:type.number",
+            "iot:unit": "iot-unit:math.fraction.percent",
+            "iot:minimum": 0,
+            "iot:maximum": 100,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#color",
+            "iot:purpose": "iot-purpose:color",
+            "iot:type": "iot:type.string",
+            "iot:format": "iot:format.color",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          }
+        ]
+      }
     },
-    "ostate": {
+    "action": "update",
+    "band": "ostate",
+    "value": {
       "brightness": 20
     },
     "request": {
-      "thing": "light",
+      "thing": "lights",
       "action": "turn up"
     }
   }

@@ -81,12 +81,11 @@ exports.run = ad => {
         user: null,
         verbose: true,
         transporter: transporter,
-        requestd: {
-            action: ad.action || null,
-            thing: ad.thing || null,
-            query: ad.query || null,
-            argument: ad.argument || ad.band || null,
-        },
+
+        action: ad.action || null,
+        thing: ad.thing || null,
+        query: ad.query || null,
+        argument: ad.argument || ad.band || null,
     }, (error, matches) => {
         if (error) {
             console.log("#", "error", _.error.message(error));

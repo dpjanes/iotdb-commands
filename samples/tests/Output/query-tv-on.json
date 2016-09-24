@@ -1,11 +1,1 @@
-[
-  {
-    "level": 20,
-    "response": "TV is off",
-    "thing-id": "thing-main-tv",
-    "request": {
-      "thing": "tv",
-      "query": "on"
-    }
-  }
-]
+[]

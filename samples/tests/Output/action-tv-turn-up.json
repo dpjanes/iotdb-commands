@@ -2,11 +2,85 @@
   {
     "level": 20,
     "response": "ok",
-    "thing-id": "thing-main-tv",
-    "ostate_previous": {
-      "volume": 50
+    "id": "thing-main-tv",
+    "thing": {
+      "id": "thing-main-tv",
+      "istate": {
+        "on": false,
+        "channel": 21,
+        "mute": false,
+        "volume": 50,
+        "band": "iot-purpose:band.hdmi"
+      },
+      "meta": {
+        "iot:thing-id": "thing-main-tv",
+        "iot:model-id": "model-tv",
+        "schema:name": "TV",
+        "iot:facet": [
+          "iot-facet:media",
+          "iot-facet:media.tv"
+        ],
+        "iot:zone": [
+          "Main Floor",
+          "Living Room"
+        ]
+      },
+      "model": {
+        "iot:model-id": "tv",
+        "iot:attribute": [
+          {
+            "@id": "#on",
+            "iot:purpose": "iot-purpose:on",
+            "iot:type": "iot:type.boolean",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#mute",
+            "iot:purpose": "iot-purpose:mute",
+            "iot:type": "iot:type.boolean",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#channel",
+            "iot:purpose": "iot-purpose:channel",
+            "iot:type": "iot:type.integer",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#volume",
+            "iot:purpose": "iot-purpose:volume",
+            "iot:type": "iot:type.integer",
+            "iot:minimum": 0,
+            "iot:maximum": 100,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          },
+          {
+            "@id": "#band",
+            "iot:purpose": "iot-purpose:band",
+            "iot:type": "iot:type.string",
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+          }
+        ]
+      }
     },
-    "ostate": {
+    "action": "update",
+    "band": "ostate",
+    "value": {
       "volume": 70
     },
     "request": {

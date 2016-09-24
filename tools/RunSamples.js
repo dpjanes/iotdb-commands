@@ -67,9 +67,7 @@ const run_one = function (contextd, done) {
     var requestd = require(in_json_path);
     let stop = false;
 
-    iotdb_commands.match(_.d.compose.shallow({
-        requestd: requestd,
-    }, contextd), function(error, matchs) {
+    iotdb_commands.match(_.d.compose.shallow(requestd, contextd), (error, matchs) => {
         if (error) {
             return done(error);
         } 
