@@ -1,5 +1,5 @@
 {
-    "iot:model-id": "tv",
+    "iot:model-id": "model-radio",
     "iot:attribute": [
         {
             "@id": "#on",
@@ -20,9 +20,24 @@
             "iot:actuator": true
         },
         {
-            "@id": "#frequency",
-            "iot:purpose": "iot-purpose:frequency",
+            "@id": "#am",
+            "iot:purpose": "iot-purpose:channel",
             "iot:type": "iot:type.integer",
+            "iot:minimum": 535,
+            "iot:maximum": 1605,
+            "iot:read": true,
+            "iot:read": true,
+            "iot:write": true,
+            "iot:sensor": true,
+            "iot:actuator": true
+        },
+        {
+            "@id": "#fm",
+            "iot:purpose": "iot-purpose:channel",
+            "iot:type": "iot:type.number",
+            "iot:minimum": 88,
+            "iot:maximum": 108,
+            "iot:read": true,
             "iot:read": true,
             "iot:write": true,
             "iot:sensor": true,

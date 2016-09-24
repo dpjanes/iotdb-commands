@@ -1,6 +1,7 @@
 {
     "on": true,
-    "frequency": 590,
+    "am": 590,
+    "fm": 102.1,
     "mute": false,
     "volume": 0.5,
     "band": "iot-purpose:band.am"
