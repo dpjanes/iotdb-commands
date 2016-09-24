@@ -24,11 +24,45 @@ Everything is written in YAML.
 
 # Use
 
-Here's a basic example. Note that this doesn't actually manipulate the
-Things for you, you have to do that yourself
+## Request Object
+
+We assume there's something doing some parsing beforehand, and we're down to the core data.
+This doesn't do any clever NLP stuff. That's what your Amazon Echo (etc) are for.
+
+### Actions
+
+Input Requests look like this:
+
+    {
+        "thing": "TV",
+        "action": "turn on"
+    }
+
+
+A special action is `forget`, which will delete the Thing from the Transporter.
+If the Transporter is IOTDB, it will disconnect the Thing.
+
+### Query
+
+List all the Things that are on
+
+    {
+        "thing": "TV",
+        "action": "on"
+    }
+
+A special action is `list`, which will list everything
+
+
+## Code
+
+Here's a basic example to directly manipulate a WeMo Socket. 
+There's a fair bit of setup, but we hope it's worth it.
 
     const iotdb = require("iotdb")
     const _ = iotdb._;
+
+    const iotdb_commands = require("iotdb-commands")
 
     iotdb.use("homestar-wemo")
     iotdb.connect("WeMoSocket")
@@ -36,19 +70,30 @@ Things for you, you have to do that yourself
     const iotdb_transport_iotdb = require("iotdb-transport-iotdb")
     const iotdb_transporter = iotdb_transport_iotdb.make({}, iotdb.things())
 
-    iotdb_thing.match({
-        verbose: false,
+    iotdb_commands.match({
         transporter: iotdb_transporter,
         requestd: {
-            action: "turn on",
+            action: "turn on",   // or try: query: "on"
             thing: "lights",
         }
     }, ( error, matches ) => {
-        matches.forEach(matchd => {
-            
+        matches.forEach(matchd => iotdb_commands.execute(iotdb_transporter, matchd, error => {
+            …
         });
     })
 
+## Command Line
+
+If you [installed Home☆Star](https://github.com/dpjanes/node-iotdb/blob/master/docs/homestar.md) 
+youll be able to try it from the command line
+
+    $ homestar --thing "tv" --action "turn on"
+    
+Note that this assumes you're in an environment set up like 
+[this](https://github.com/dpjanes/homestar-persist), so don't 
+tear your hair out if this doesn't work for you immediately.
+
+# Development
 
 ## Examples
 Try it out using
@@ -78,20 +123,3 @@ The folder
 are the "Things" we test with
 
 
-# Code
-
-Input Requests look like this:
-
-    {
-        "thing": "TV",
-        "action": "turn on"
-    }
-
-I.e. we assume there's something doing some parsing beforehand, and we're down to the core data.
-
-You use the `match` function with a `transporter` which holds all your Things. The 
-`match` function will return an array of matches.
-
-Each match has a level, always numerically sorted from lowest to highest. The thinking is 
-code executing only use the first level they see. This sounds like nonsense and we'll probably
-just trim the list the right way.
