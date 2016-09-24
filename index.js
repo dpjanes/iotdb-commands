@@ -22,26 +22,30 @@
 
 "use strict";
 
-var iotdb = require('iotdb');
-var _ = iotdb._;
-var logger = iotdb.logger({
+const iotdb = require('iotdb');
+const _ = iotdb._;
+
+const logger = iotdb.logger({
     name: "iotdb-commands",
-    module: "idnex",
+    module: "index",
 });
 
-var vocabulary = require('./lib/vocabulary');
-var match = require('./lib/match');
+const vocabulary = require('./lib/vocabulary');
+const match = require('./lib/match');
+const execute = require('./lib/execute');
 
 
 /**
  *  API
  */
-exports.add_extensions = vocabulary.add_extensions;
-
+// these probably shouldn't be use - may not expose in future
 exports.things = vocabulary.things;
 exports.actions = vocabulary.actions;
 exports.querys = vocabulary.querys;
 exports.extensions = vocabulary.extensions;
 exports.load = vocabulary.load;
 
+// main API
+exports.add_extensions = vocabulary.add_extensions;
 exports.match = match.match;
+exports.execute = match.execute;
