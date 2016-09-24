@@ -3,5 +3,5 @@
     "iot:model-id": "model-tv-off",
     "schema:name": "TV",
     "iot:facet": [ "iot-facet:media", "iot-facet:media.tv" ],
-    "iot:zone": [ "Master Bedroom" ]
+    "iot:zone": [ "Second Floor", "Master Bedroom" ]
 }
