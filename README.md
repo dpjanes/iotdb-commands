@@ -89,8 +89,8 @@ youll be able to try it from the command line
 
     $ homestar --thing "tv" --action "turn on"
     
-Note that this assumes you're in an environment set up like 
-[this](https://github.com/dpjanes/homestar-persist), so don't 
+Note that this assumes you're in an environment set up by
+[homestar-persist](https://github.com/dpjanes/homestar-persist), so don't 
 tear your hair out if this doesn't work for you immediately.
 
 # Development
@@ -106,20 +106,11 @@ have sample results, so `RunSamples` will work to run test caes
 
 ## Test Cases
 
-There are numerous test cases in [test](test).
+There are numerous test cases in [test](test). These
+are independent of the samples (next sction).
 
-## Folders
+## More Test Cases
 
-The folders
-
-    samples/tests
-
-Have input Requests to test against
-
-The folder
-
-    samples/things
-
-are the "Things" we test with
-
+The folders `samples/tests` Have input Requests to test against
+The folder `samples/things` are the "Things" to test with
 

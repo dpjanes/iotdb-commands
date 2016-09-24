@@ -34,7 +34,14 @@ exports.summary = "send a command - test human speech-like stuff";
 exports.boolean = [];
 
 exports.help = () => {
-    console.log("usage: homestar command [--thing <thing text>] [--action <action text>]");
+    console.log("usage: homestar command [--thing <thing text>] [--action <action text>] [--query <query text>]");
+    console.log("");
+    console.log("Options:");
+    console.log("  --thing <thing text>   : e.g. light, tv, switch");
+    console.log("  --action <action text> : e.g. turn on, turn off, turn up");
+    console.log("  --query <query text>   : e.g. on, off, temperature");
+    console.log("");
+    console.log("One of --thing or --query is required");
     console.log("");
 };
 
