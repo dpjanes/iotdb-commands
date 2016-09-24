@@ -5,16 +5,17 @@
     }, 
     "dependencies": {
         "async": "~2.0.1", 
+        "homestar-persist": "~3.0.3", 
         "iotdb": ">=3.0.0", 
-        "iotdb-format": "~0.0.4", 
-        "iotdb-thing": "~3.0.8", 
-        "iotdb-errors": "~3.0.8", 
-        "iotdb-transport-fs": "~3.0.5", 
+        "iotdb-errors": "~3.0.2", 
+        "iotdb-format": "~0.0.5", 
+        "iotdb-thing": "~3.0.9", 
+        "iotdb-transport-fs": "~3.0.6", 
         "js-yaml": "~3.6.1", 
         "minimist": "~1.2.0", 
         "porter-stemmer": "~0.9.1"
     }, 
-    "description": "IOTDB Module", 
+    "description": "Apply human-like commands to IOTDB Things", 
     "devDependencies": {
         "grunt": "~1.0.1", 
         "grunt-contrib-jshint": "~1.0.0", 
@@ -40,5 +41,5 @@
         "samples": "node tools/RunSamples --extensions samples/extensions --all --test", 
         "test": "grunt"
     }, 
-    "version": "3.0.2"
+    "version": "3.0.3"
 }
