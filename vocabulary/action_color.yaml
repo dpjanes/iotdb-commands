@@ -1,0 +1,19 @@
+---
+action: 
+    - "change color"
+    - "set color"
+argument: 
+    - "red"
+    - "green"
+    - "blue"
+    - "cyan"
+    - "yellow"
+    - "magenta"
+    - "purple"
+    - "pink"
+    - "brown"
+    - "white"
+    - "black"
+    - "gray"
+do:
+    iot:purpose: ":color"

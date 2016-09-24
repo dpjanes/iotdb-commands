@@ -6,4 +6,3 @@ action:
 argument: "*"
 do:
     iot:purpose: ":channel"
-    value: "iot-purpose:channel"
