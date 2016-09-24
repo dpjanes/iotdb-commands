@@ -51,7 +51,7 @@ describe("action_up_down", function() {
                     {
                         const r_thing = helpers.select(matches, 'thing-main-thermometer');
                         const r_value = r_thing.value.tem;
-                        const x_value = 70.5;
+                        const x_value = 71;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
@@ -137,7 +137,7 @@ describe("action_up_down", function() {
                     {
                         const r_thing = helpers.select(matches, 'thing-main-thermometer');
                         const r_value = r_thing.value.tem;
-                        const x_value = 69.5;
+                        const x_value = 69;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
