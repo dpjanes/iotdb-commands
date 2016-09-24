@@ -48,4 +48,4 @@ exports.load = vocabulary.load;
 // main API
 exports.add_extensions = vocabulary.add_extensions;
 exports.match = match.match;
-exports.execute = match.execute;
+exports.execute = execute.execute;

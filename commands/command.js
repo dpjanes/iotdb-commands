@@ -25,7 +25,7 @@
 const iotdb = require('iotdb');
 const _ = iotdb._;
 
-const iotdb_thing = require('..');
+const iotdb_commands = require('..');
 
 const configuration = require("homestar-persist").configuration;
 
@@ -68,12 +68,12 @@ exports.run = ad => {
     }
 
     const cfgd = _.first(configuration());
-    const out_transporter = require(cfgd.transporter).make(cfgd.initd);
+    const transporter = require(cfgd.transporter).make(cfgd.initd);
 
-    iotdb_thing.match({
+    iotdb_commands.match({
         user: null,
         verbose: true,
-        transporter: out_transporter,
+        transporter: transporter,
         requestd: {
             action: ad.action || null,
             thing: ad.thing || null,
@@ -87,42 +87,27 @@ exports.run = ad => {
         }
 
         matches
-            .filter(matchd => matchd.id)
             .forEach(matchd => {
-                if (matchd.action === "update") {
-                    const value = _.d.compose(matchd.value, matchd.thing[matchd.band])
-                    out_transporter.put({
-                        id: matchd.id,
-                        band: matchd.band,
-                        value: matchd.value,
-                    }).subscribe(
-                        ok => {
-                            console.log("+", "updated");
-                            console.log("id", matchd.id);
-                            _explain(matchd.band, matchd.value).forEach(line => console.log(line));
-                            _explain("meta", matchd.thing.meta).forEach(line => console.log(line));
-                            console.log();
-                        },
-                        error => console.log("#", matchd.id, _.error.message(error))
-                    )
-                } else if (matchd.action === "remove") {
-                    out_transporter.remove({
-                        id: matchd.id,
-                    }).subscribe(
-                        () => {
-                            console.log("+", "removed");
-                            console.log("id", matchd.id);
-                            console.log();
-                        }
-                    )
-                    return;
-                } else if (matchd.response) {
-                    console.log("+", matchd.response);
-                    return;
-                } else {
-                    console.log("ARGGGG", matchd);
-                    return;
-                }
+                iotdb_commands.execute(transporter, matchd, error => {
+                    if (error) {
+                        console.log("#", _.error.message(error));
+                        return;
+                    }
+
+                    if (matchd.action === "update") {
+                        console.log("+", "updated");
+                        console.log("id", matchd.id);
+                        _explain(matchd.band, matchd.value).forEach(line => console.log(line));
+                        _explain("meta", matchd.thing.meta).forEach(line => console.log(line));
+                        console.log();
+                    } else if (matchd.action === "remove") {
+                        console.log("+", "removed");
+                        console.log("id", matchd.id);
+                        console.log();
+                    } else if (matchd.response) {
+                        console.log("+", matchd.response);
+                    }
+                });
             });
     });
 };

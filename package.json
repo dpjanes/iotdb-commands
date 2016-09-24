@@ -8,6 +8,7 @@
         "iotdb": ">=3.0.0", 
         "iotdb-format": "~0.0.4", 
         "iotdb-thing": "~3.0.8", 
+        "iotdb-errors": "~3.0.8", 
         "iotdb-transport-fs": "~3.0.5", 
         "js-yaml": "~3.6.1", 
         "minimist": "~1.2.0", 
