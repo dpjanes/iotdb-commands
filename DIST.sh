@@ -31,10 +31,14 @@ echo "=================="
 
     tar cf - \
         --exclude "node_modules" \
+        --exclude "xxx*" \
+        --exclude "yyy*" \
+        --exclude "Gruntfile.js" \
         README.md LICENSE \
-        package.json \
+        package.json homestar.json \
         index.js \
         lib/*.js \
+        commands/*.js \
         vocabulary/*.yaml \
         |
     ( cd "${NPM_DST}" && tar xvf - && npm publish ) || exit 1

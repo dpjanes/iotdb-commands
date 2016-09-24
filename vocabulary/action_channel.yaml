@@ -1,0 +1,10 @@
+---
+action: "change channel"
+do:
+    iot:purpose: ":channel"
+    value: "iot-purpose:channel"
+---
+action: "set channel"
+do:
+    iot:purpose: ":channel"
+    value: "iot-purpose:channel"
