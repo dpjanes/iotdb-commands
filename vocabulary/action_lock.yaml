@@ -1,0 +1,18 @@
+---
+action: "lock"
+do:
+    iot:purpose: ":lock"
+    value: true
+---
+action: "lock"
+do:
+    iot:purpose: ":lock.true"
+---
+action: "unlock"
+do:
+    iot:purpose: ":lock"
+    value: false
+---
+action: "unlock"
+do:
+    iot:purpose: ":lock.false"
