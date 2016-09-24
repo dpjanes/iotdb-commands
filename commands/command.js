@@ -90,6 +90,7 @@ exports.run = ad => {
             .filter(matchd => matchd.id)
             .forEach(matchd => {
                 if (matchd.action === "update") {
+                    const value = _.d.compose(matchd.value, matchd.thing[matchd.band])
                     out_transporter.put({
                         id: matchd.id,
                         band: matchd.band,
