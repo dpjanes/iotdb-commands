@@ -24,6 +24,9 @@
 
 "use strict";
 
+const iotdb = require("iotdb")
+const _ = iotdb._;
+
 const iotdb_thing = require("../..");
 const transport = require("./transport");
 
@@ -33,11 +36,10 @@ const run = ( requestd, done ) => {
             return done(error);
         }
 
-        iotdb_thing.match({
+        iotdb_thing.match(_.d.compose.shallow(requestd, {
             verbose: false,
             transporter: transporter,
-            requestd: requestd,
-        }, done);
+        }), done);
     });
 };
 
