@@ -44,9 +44,9 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(matches.length, 2);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.band, 'iot-purpose:band.hdmi');
-                        // console.log(matches);
+                        assert.deepEqual(helpers.select(matches, 'thing-master-tv-on').value.band, 'iot-purpose:band.hdmi');
                         done();
                     }
                     catch (x) {
@@ -64,8 +64,9 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         // console.log(matches);
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(matches.length, 2);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.band, 'iot-purpose:band.hdmi.2');
+                        assert.deepEqual(helpers.select(matches, 'thing-master-tv-on').value.band, 'iot-purpose:band.hdmi.2');
                         done();
                     }
                     catch (x) {

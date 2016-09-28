@@ -30,6 +30,46 @@
             "iot:write": true,
             "iot:sensor": false,
             "iot:actuator": false
+        },
+        {
+          "@id": "#band",
+          "@type": "iot:Attribute",
+          "iot:actuator": true,
+          "iot:enumeration": [
+            "iot-purpose:band.antenna",
+            "iot-purpose:band.component",
+            "iot-purpose:band.component.1",
+            "iot-purpose:band.component.2",
+            "iot-purpose:band.component.3",
+            "iot-purpose:band.dvi",
+            "iot-purpose:band.hdmi",
+            "iot-purpose:band.hdmi.1",
+            "iot-purpose:band.hdmi.2",
+            "iot-purpose:band.hdmi.3",
+            "iot-purpose:band.hdmi.4",
+            "iot-purpose:band.pc",
+            "iot-purpose:band.rgb",
+            "iot-purpose:band.rgb.1",
+            "iot-purpose:band.rgb.2",
+            "iot-purpose:band.s-video",
+            "iot-purpose:band.s-video.1",
+            "iot-purpose:band.s-video.2",
+            "iot-purpose:band.tv",
+            "iot-purpose:band.usb",
+            "iot-purpose:band.video",
+            "iot-purpose:band.video.1",
+            "iot-purpose:band.video.2",
+            "iot-purpose:band.video.3",
+            "iot-purpose:band.video.4",
+            "iot-purpose:band.video.5"
+          ],
+          "iot:instantaneous": true,
+          "iot:purpose": "iot-purpose:band",
+          "iot:read": false,
+          "iot:sensor": true,
+          "iot:type": "iot:type.string",
+          "iot:write": true,
+          "schema:name": "band"
         }
     ]
 }
