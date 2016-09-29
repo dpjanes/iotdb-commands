@@ -40,6 +40,7 @@ describe("action_mute", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
+                    assert.deepEqual(helpers.response(matches), "muting 3 things");
                     assert.deepEqual(helpers.updates(matches).length, 3);
                     assert.ok(helpers.select(matches, 'thing-master-tv-on').value.mute);
                     done();
@@ -58,6 +59,7 @@ describe("action_mute", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
+                    assert.deepEqual(helpers.response(matches), "muting 2 TVs");
                     assert.deepEqual(helpers.updates(matches).length, 2);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.mute, true);
                     assert.ok(helpers.select(matches, 'thing-master-tv-on').value.mute);
@@ -81,6 +83,7 @@ describe("action_mute", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
+                    assert.deepEqual(helpers.response(matches), "unmuting 3 things");
                     assert.deepEqual(helpers.updates(matches).length, 3);
                     assert.ok(helpers.select(matches, 'thing-master-tv-off').value.unmute);
                     assert.strictEqual(helpers.select(matches, 'thing-main-tv').value.mute, false);
@@ -101,6 +104,7 @@ describe("action_mute", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
+                    assert.deepEqual(helpers.response(matches), "unmuting one Radio");
                     assert.deepEqual(helpers.updates(matches).length, 1);
                     assert.strictEqual(helpers.select(matches, 'thing-main-radio').value.mute, false);
                     done();

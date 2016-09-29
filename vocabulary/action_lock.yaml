@@ -6,7 +6,7 @@ do:
 header:
     zero: "nothing to lock"
     one: "locking one {{ thing }}"
-    many: "locking {{ count }} {{ things }}"
+    response: "locking {{ count }} {{ things }}"
 ---
 action: "lock"
 do:
@@ -19,7 +19,7 @@ do:
 header:
     zero: "nothing to unlock"
     one: "unlocking one {{ thing }}"
-    many: "unlocking {{ count }} {{ things }}"
+    response: "unlocking {{ count }} {{ things }}"
 ---
 action: "unlock"
 do:

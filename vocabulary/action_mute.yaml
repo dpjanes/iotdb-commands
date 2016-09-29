@@ -6,7 +6,7 @@ do:
 header:
     zero: "nothing to mute"
     one: "muting one {{ thing }}"
-    many: "muting {{ count }} {{ things }}"
+    response: "muting {{ count }} {{ things }}"
 ---
 action: "mute"
 do:
@@ -19,7 +19,7 @@ do:
 header:
     zero: "nothing to unmute"
     one: "unmuting one {{ thing }}"
-    many: "unmuting {{ count }} {{ things }}"
+    response: "unmuting {{ count }} {{ things }}"
 ---
 action: "unmute"
 do:

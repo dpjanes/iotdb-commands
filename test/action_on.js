@@ -40,7 +40,7 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.response(matches), "turning on 5 things");
+                    assert.deepEqual(helpers.response(matches), "turning on 4 things");
                     assert.deepEqual(helpers.updates(matches).length, 4);
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value, { on: true });
                     assert.ok(helpers.select(helpers.updates(matches), 'thing-master-tv-on').value.on);
@@ -60,7 +60,7 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.response(matches), "turning on 3 TVs");
+                    assert.deepEqual(helpers.response(matches), "turning on 2 TVs");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: true });
                     assert.ok(helpers.select(helpers.updates(matches), 'thing-master-tv-on').value.on);
@@ -84,7 +84,7 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.response(matches), "turning off 5 things");
+                    assert.deepEqual(helpers.response(matches), "turning off 4 things");
                     assert.deepEqual(helpers.updates(matches).length, 4);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value, { on: false });
@@ -105,7 +105,7 @@ describe("action_on", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.deepEqual(helpers.response(matches), "turning off 3 TVs");
+                    assert.deepEqual(helpers.response(matches), "turning off 2 TVs");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });
                     assert.ok(helpers.select(helpers.updates(matches), 'thing-master-tv-off').value.off);
