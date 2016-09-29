@@ -1,8 +1,0 @@
-## ---
-## thing: "lights"
-## meta:
-##     iot:facet: ":lighting.light"
-## ---
-## thing: "lights"
-## meta:
-##     schema:name: "Lights"
