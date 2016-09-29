@@ -3,6 +3,10 @@ action: "mute"
 do:
     iot:purpose: ":mute"
     value: true
+header:
+    zero: "nothing to mute"
+    one: "muting one {{ thing }}"
+    many: "muting {{ count }} {{ things }}"
 ---
 action: "mute"
 do:
@@ -12,6 +16,10 @@ action: "unmute"
 do:
     iot:purpose: ":mute"
     value: false
+header:
+    zero: "nothing to unmute"
+    one: "unmuting one {{ thing }}"
+    many: "unmuting {{ count }} {{ things }}"
 ---
 action: "unmute"
 do:

@@ -3,6 +3,10 @@ action: "lock"
 do:
     iot:purpose: ":lock"
     value: true
+header:
+    zero: "nothing to lock"
+    one: "locking one {{ thing }}"
+    many: "locking {{ count }} {{ things }}"
 ---
 action: "lock"
 do:
@@ -12,6 +16,10 @@ action: "unlock"
 do:
     iot:purpose: ":lock"
     value: false
+header:
+    zero: "nothing to unlock"
+    one: "unlocking one {{ thing }}"
+    many: "unlocking {{ count }} {{ things }}"
 ---
 action: "unlock"
 do:

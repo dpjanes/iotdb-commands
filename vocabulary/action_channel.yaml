@@ -1,8 +1,10 @@
 ---
 action: 
+    - "set channel"
     - "change channel"
     - "switch channel"
-    - "set channel"
 argument: "*"
 do:
     iot:purpose: ":channel"
+header:
+    response: "changing channel to {{ argument }}"

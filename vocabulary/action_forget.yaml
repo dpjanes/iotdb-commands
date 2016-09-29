@@ -2,3 +2,7 @@
 action: "forget"
 do:
     rule: remove
+header:
+    zero: "nothing to forget"
+    one: "forgetting one {{ thing }}"
+    response: "forgetting {{ count }} {{ things }}"

@@ -6,6 +6,10 @@ do:
     iot:purpose: ":brightness"
     rule: "delta-percent"
     value: +20
+header:
+    zero: "nothing to turn up"
+    one: "turning up one {{ thing }}"
+    many: "turning up {{ count }} {{ things }}"
 ---
 action: "turn down"
 meta:
@@ -14,6 +18,10 @@ do:
     iot:purpose: ":brightness"
     rule: "delta-percent"
     value: -20
+header:
+    zero: "nothing to turn down"
+    one: "turning down one {{ thing }}"
+    many: "turning down {{ count }} {{ things }}"
 ---
 action: "turn up"
 meta:

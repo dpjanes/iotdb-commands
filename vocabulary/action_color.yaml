@@ -17,3 +17,5 @@ argument:
     - "gray"
 do:
     iot:purpose: ":color"
+header:
+    response: "changing color to {{ argument }}"
