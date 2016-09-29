@@ -58,6 +58,7 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log("HERE:XXX", matches[0])
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: true });

@@ -1,8 +1,9 @@
 ---
 action: "turn on"
 header: 
+    response: "turning on {{ count }} {{ things }}"
+    zero: "nothing to turn on"
     one: "turning on {{ count }} {{ thing }}"
-    many: "turning on {{ count }} {{ things }}"
 do:
     iot:purpose: ":on"
     value: true
@@ -13,8 +14,9 @@ do:
 ---
 action: "turn off"
 header: 
+    response: "turning off {{ count }} {{ things }}"
+    zero: "nothing to turn off"
     one: "turning off {{ count }} {{ thing }}"
-    many: "turning off {{ count }} {{ things }}"
 do:
     iot:purpose: ":on"
     value: false
