@@ -39,6 +39,7 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log("HERE:1", helpers.response(matches));
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.updates(matches).length, 4);
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value, { on: true });
@@ -58,7 +59,7 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
-                    console.log("HERE:XXX", matches[0])
+                    console.log("HERE:2", helpers.response(matches));
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-on' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: true });
@@ -82,6 +83,7 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log("HERE:3", helpers.response(matches));
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.updates(matches).length, 4);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });
@@ -102,6 +104,8 @@ describe("action_on", function() {
                 thing: thing,
             }, (error, matches) => {
                 try {
+                    console.log(matches[0])
+                    console.log("HERE:4", helpers.response(matches));
                     assert.ok(!error, "no error expected");
                     assert.deepEqual(helpers.ids(matches), [ 'thing-main-tv', 'thing-master-tv-off' ]);
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').value, { on: false });

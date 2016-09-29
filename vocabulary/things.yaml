@@ -1,112 +1,114 @@
 ---
 thing: "coffee maker"
 meta:
-	iot:facet: ":appliance.coffee-maker" 
+    iot:facet: ":appliance.coffee-maker" 
 ---
 thing: "kettle"
 meta:
-	iot:facet: ":appliance.kettle" 
+    iot:facet: ":appliance.kettle" 
 ---
 thing: 
     - "microwave"
     - "microwave oven"
 meta:
-	iot:facet: ":appliance.microwave" 
+    iot:facet: ":appliance.microwave" 
 ---
 thing: "oven"
 meta:
-	iot:facet: ":appliance.oven" 
+    iot:facet: ":appliance.oven" 
 ---
 thing: 
     - "refrigerator"
     - "fridge"
 meta:
-	iot:facet: ":appliance.refrigerator" 
+    iot:facet: ":appliance.refrigerator" 
 ---
 thing: "stove"
 meta:
-	iot:facet: ":appliance.stove" 
+    iot:facet: ":appliance.stove" 
 ---
 thing: "toaster"
 meta:
-	iot:facet: ":appliance.toaster" 
+    iot:facet: ":appliance.toaster" 
 ---
 thing: 
     - "vacuum"
     - "vacuum cleaner"
 meta:
-	iot:facet: ":appliance.vacuum" 
+    iot:facet: ":appliance.vacuum" 
 ---
 thing: "cooling"
 meta:
-	iot:facet: ":climate.cooling" 
+    iot:facet: ":climate.cooling" 
 ---
 thing: "heating"
 meta:
-	iot:facet: ":climate.heating" 
+    iot:facet: ":climate.heating" 
 ---
 thing: "door"
 meta:
-	iot:facet: ":fixture.door" 
+    iot:facet: ":fixture.door" 
 ---
 thing: "window"
 meta:
-	iot:facet: ":fixture.window" 
+    iot:facet: ":fixture.window" 
 ---
 thing: 
     - "light"
     - "lighting"
 meta:
-	iot:facet: ":lighting.light" 
+    iot:facet: ":lighting.light" 
 ---
 thing: 
     - "bluray"
     - "bluray player"
 meta:
-	iot:facet: ":media.player.blu-ray" 
+    iot:facet: ":media.player.blu-ray" 
 ---
 thing: 
     - "cd"
     - "cd player"
 meta:
-	iot:facet: ":media.player.cd" 
+    iot:facet: ":media.player.cd" 
 ---
 thing: 
     - "dvd"
     - "dvd player"
 meta:
-	iot:facet: ":media.player.dvd" 
+    iot:facet: ":media.player.dvd" 
 ---
 thing: "turntable"
 meta:
-	iot:facet: ":media.player.turntable" 
+    iot:facet: ":media.player.turntable" 
 ---
 thing: "radio"
 meta:
-	iot:facet: ":media.radio" 
+    iot:facet: ":media.radio" 
 ---
 thing: "am radio"
 meta:
-	iot:facet: ":media.radio.am" 
+    iot:facet: ":media.radio.am" 
 ---
 thing: "fm radio"
 meta:
-	iot:facet: ":media.radio.fm" 
+    iot:facet: ":media.radio.fm" 
 ---
 thing: "internet radio"
 meta:
-	iot:facet: ":media.radio.internet" 
+    iot:facet: ":media.radio.internet" 
 ---
 thing: 
     - "receiver"
     - "stereo"
 meta:
-	iot:facet: ":media.receiver" 
+    iot:facet: ":media.receiver" 
 ---
-thing: "tv"
+thing: 
+    - "tv"
+    - "television"
 meta:
-	iot:facet: ":media.tv" 
+    iot:facet: ":media.tv" 
 ---
 thing: "alarm"
 meta:
-	iot:facet: ":security.alarm" 
+    iot:facet: ":security.alarm" 

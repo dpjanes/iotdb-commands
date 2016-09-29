@@ -57,3 +57,4 @@ exports.ids = ids;
 exports.updates = matches => filter(matches, "update");
 exports.removes = matches => filter(matches, "remove");
 exports.responses = matches => filter(matches, "response");
+exports.response = matches => filter(matches, "header").find(match => true).response;
