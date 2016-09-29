@@ -41,7 +41,7 @@ describe("query_channel", function() {
                 assert.ok(!error, "no error expected");
 
                 assert.deepEqual(helpers.select(matches, 'thing-main-tv').response, 'the channel is 21');
-                assert.strictEqual(helpers.response(matches), "found 2 things");
+                assert.strictEqual(helpers.response(matches), "HomeStar found 2 things");
 
                 done();
             }

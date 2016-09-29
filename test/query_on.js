@@ -44,7 +44,7 @@ describe("query_on", function() {
 
                     assert.deepEqual(helpers.select(matches, 'thing-main-radio').response, 'Radio is on');
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').response, 'Lights is on');
-                    assert.strictEqual(helpers.response(matches), "found 2 things");
+                    assert.strictEqual(helpers.response(matches), "HomeStar found 2 things");
 
                     done();
                 }
@@ -69,7 +69,7 @@ describe("query_on", function() {
                     assert.ok(!error, "no error expected");
 
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').response, 'TV is off');
-                    assert.strictEqual(helpers.response(matches), "found 1 thing");
+                    assert.strictEqual(helpers.response(matches), "HomeStar found 1 thing");
 
                     done();
                 }

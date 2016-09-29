@@ -41,7 +41,7 @@ describe("action_up_down", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.strictEqual(helpers.updates(matches).length, 7);
-                    assert.strictEqual(helpers.response(matches), "turning up 7 things");
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning up 7 things");
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
@@ -96,7 +96,7 @@ describe("action_up_down", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.strictEqual(helpers.updates(matches).length, 2);
-                    assert.strictEqual(helpers.response(matches), "turning up 2 TVs");
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning up 2 TVs");
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
                         const r_value = r_thing.value.volume;
@@ -129,7 +129,7 @@ describe("action_up_down", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.strictEqual(helpers.updates(matches).length, 7);
-                    assert.strictEqual(helpers.response(matches), "turning down 7 things");
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning down 7 things");
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
@@ -184,7 +184,7 @@ describe("action_up_down", function() {
                 try {
                     assert.ok(!error, "no error expected");
                     assert.strictEqual(helpers.updates(matches).length, 2);
-                    assert.strictEqual(helpers.response(matches), "turning down 2 TVs");
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning down 2 TVs");
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
                         const r_value = r_thing.value.volume;

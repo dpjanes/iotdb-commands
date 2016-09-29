@@ -44,7 +44,7 @@ describe("action_color", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(helpers.response(matches), "changing color to RED for 1 thing");
+                        assert.deepEqual(helpers.response(matches), "HomeStar is changing color to RED for 1 thing");
                         assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value.color, argument)
                         done();
@@ -64,7 +64,7 @@ describe("action_color", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(helpers.response(matches), "changing color to blue for 1 thing");
+                        assert.deepEqual(helpers.response(matches), "HomeStar is changing color to blue for 1 thing");
                         assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value.color, argument)
                         done();

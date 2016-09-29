@@ -40,7 +40,7 @@ describe("query_list", function() {
             try {
                 assert.ok(!error, "no error expected");
                 assert.ok(matches.length);
-                assert.strictEqual(helpers.response(matches), "found 10 things");
+                assert.strictEqual(helpers.response(matches), "HomeStar found 10 things");
                 // console.log(helpers.response(matches));
                 // assert.strictEqual(matches.filter(md => md.response).length, matches.length - 1);
                 // console.log(matches);
@@ -60,7 +60,7 @@ describe("query_list", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(helpers.response(matches), "found 3 TVs");
+                assert.strictEqual(helpers.response(matches), "HomeStar found 3 TVs");
                 assert.strictEqual(matches.length - 1, 3);
                 done();
             }
@@ -78,7 +78,7 @@ describe("query_list", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(helpers.response(matches), "found 1 Light");
+                assert.strictEqual(helpers.response(matches), "HomeStar found 1 Light");
                 assert.strictEqual(matches.length - 1, 1);
                 done();
             }
