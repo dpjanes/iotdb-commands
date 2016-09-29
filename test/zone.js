@@ -41,7 +41,7 @@ describe("zone", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 3);
+                assert.strictEqual(helpers.responses(matches).length, 3);
                 done();
             }
             catch (x) {
@@ -59,7 +59,7 @@ describe("zone", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 5);
+                assert.strictEqual(helpers.responses(matches).length, 5);
                 done();
             }
             catch (x) {
@@ -77,7 +77,7 @@ describe("zone", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 4);
+                assert.strictEqual(helpers.responses(matches).length, 4);
                 done();
             }
             catch (x) {
@@ -95,7 +95,7 @@ describe("zone", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 1);
+                assert.strictEqual(helpers.responses(matches).length, 1);
                 done();
             }
             catch (x) {
@@ -113,7 +113,7 @@ describe("zone", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 0);
+                assert.strictEqual(helpers.responses(matches).length, 0);
                 done();
             }
             catch (x) {

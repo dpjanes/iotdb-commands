@@ -40,7 +40,7 @@ describe("query_list", function() {
             try {
                 assert.ok(!error, "no error expected");
                 assert.ok(matches.length);
-                assert.strictEqual(matches.filter(md => md.response).length, matches.length);
+                assert.strictEqual(matches.filter(md => md.response).length, matches.length - 1);
                 // console.log(matches);
                 done();
             }
@@ -58,8 +58,7 @@ describe("query_list", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 3);
-                assert.strictEqual(matches.filter(md => md.id.indexOf('-tv') > -1).length, matches.length);
+                assert.strictEqual(matches.length - 1, 3);
                 done();
             }
             catch (x) {
@@ -76,8 +75,7 @@ describe("query_list", function() {
         }, (error, matches) => {
             try {
                 assert.ok(!error, "no error expected");
-                assert.strictEqual(matches.length, 1);
-                assert.strictEqual(matches.filter(md => md.id.indexOf('-light') > -1).length, matches.length);
+                assert.strictEqual(matches.length - 1, 1);
                 done();
             }
             catch (x) {

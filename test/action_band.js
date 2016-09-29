@@ -44,7 +44,7 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 2);
+                        assert.deepEqual(helpers.updates(matches).length, 2);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.band, 'iot-purpose:band.hdmi');
                         assert.deepEqual(helpers.select(matches, 'thing-master-tv-on').value.band, 'iot-purpose:band.hdmi');
                         done();
@@ -64,7 +64,7 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         // console.log(matches);
-                        assert.deepEqual(matches.length, 2);
+                        assert.deepEqual(helpers.updates(matches).length, 2);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.band, 'iot-purpose:band.hdmi.2');
                         assert.deepEqual(helpers.select(matches, 'thing-master-tv-on').value.band, 'iot-purpose:band.hdmi.2');
                         done();
@@ -84,7 +84,7 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         // console.log(matches);
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-main-radio').value.band, 'iot-purpose:band.am');
                         done();
                     }
@@ -103,7 +103,7 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         // console.log(matches);
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-main-radio').value.band, 'iot-purpose:band.fm');
                         done();
                     }
@@ -122,7 +122,7 @@ describe("action_band", function() {
                 }, (error, matches) => {
                     try {
                         // console.log(matches);
-                        assert.deepEqual(matches.length, 2);
+                        assert.deepEqual(helpers.updates(matches).length, 2);
                         assert.deepEqual(helpers.select(matches, 'thing-main-radio').value.band, 'iot-purpose:band.service.pandora');
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.band, 'iot-purpose:band.service.pandora');
                         done();

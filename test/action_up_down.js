@@ -40,7 +40,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 7);
+                    assert.strictEqual(helpers.updates(matches).length, 7);
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
@@ -94,7 +94,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 2);
+                    assert.strictEqual(helpers.updates(matches).length, 2);
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
                         const r_value = r_thing.value.volume;
@@ -126,7 +126,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 7);
+                    assert.strictEqual(helpers.updates(matches).length, 7);
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
@@ -180,7 +180,7 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(matches.length, 2);
+                    assert.strictEqual(helpers.updates(matches).length, 2);
                     {
                         const r_thing = helpers.select(matches, 'thing-main-tv');
                         const r_value = r_thing.value.volume;

@@ -44,7 +44,8 @@ const run = ( requestd, done ) => {
 };
 
 const select = ( matches, id ) => matches.find(d => d.id === id)
-const ids = ( matches ) => matches.map(d => d.id).sort()
+const ids = ( matches ) => matches.map(d => d.id).filter(d => d).sort()
+const filter = ( matches, what ) => matches.filter(d => d.action === what)
 
 /*
  *  API
@@ -53,3 +54,6 @@ exports.transport = transport;
 exports.run = run;
 exports.select = select;
 exports.ids = ids;
+exports.updates = matches => filter(matches, "update");
+exports.removes = matches => filter(matches, "remove");
+exports.responses = matches => filter(matches, "response");

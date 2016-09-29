@@ -44,7 +44,7 @@ describe("action_channel", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.channel, "32");
                         done();
                     }
@@ -71,7 +71,7 @@ describe("action_channel", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-main-tv').value.channel, "48");
                         done();
                     }
@@ -103,7 +103,7 @@ describe("action_channel", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-main-radio').value.am, 535);
                         done();
                     }

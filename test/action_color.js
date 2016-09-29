@@ -44,7 +44,7 @@ describe("action_color", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value.color, argument)
                         done();
                     }
@@ -63,7 +63,7 @@ describe("action_color", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 1);
+                        assert.deepEqual(helpers.updates(matches).length, 1);
                         assert.deepEqual(helpers.select(matches, 'thing-master-lighting').value.color, argument)
                         done();
                     }
@@ -82,7 +82,7 @@ describe("action_color", function() {
                 }, (error, matches) => {
                     try {
                         assert.ok(!error, "no error expected");
-                        assert.deepEqual(matches.length, 0);
+                        assert.deepEqual(helpers.updates(matches).length, 0);
                         done();
                     }
                     catch (x) {
