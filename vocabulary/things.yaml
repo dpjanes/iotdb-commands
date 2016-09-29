@@ -2,40 +2,64 @@
 thing: "coffee maker"
 meta:
     iot:facet: ":appliance.coffee-maker" 
+header:
+    thing: "Coffee Maker"
+    things: "Coffee Makers"
 ---
 thing: "kettle"
 meta:
     iot:facet: ":appliance.kettle" 
+header:
+    thing: "Kettle"
+    things: "Kettles"
 ---
 thing: 
     - "microwave"
     - "microwave oven"
 meta:
     iot:facet: ":appliance.microwave" 
+header:
+    thing: "Microwave"
+    things: "Microwaves"
 ---
 thing: "oven"
 meta:
     iot:facet: ":appliance.oven" 
+header:
+    thing: "Oven"
+    things: "Ovens"
 ---
-thing: 
-    - "refrigerator"
+thing:
+    - "refridgerator"
     - "fridge"
 meta:
     iot:facet: ":appliance.refrigerator" 
+header:
+    thing: "Refridgerator"
+    things: "Refridgerators"
 ---
 thing: "stove"
 meta:
     iot:facet: ":appliance.stove" 
+header:
+    thing: "Stove"
+    things: "Stoves"
 ---
 thing: "toaster"
 meta:
     iot:facet: ":appliance.toaster" 
+header:
+    thing: "Toaster"
+    things: "Toasters"
 ---
-thing: 
+thing:
     - "vacuum"
     - "vacuum cleaner"
 meta:
     iot:facet: ":appliance.vacuum" 
+header:
+    thing: "Vacuum"
+    things: "Vacuums"
 ---
 thing: "cooling"
 meta:
@@ -48,62 +72,99 @@ meta:
 thing: "door"
 meta:
     iot:facet: ":fixture.door" 
+header:
+    thing: "Door"
+    things: "Doors"
 ---
 thing: "window"
 meta:
     iot:facet: ":fixture.window" 
+header:
+    thing: "Window"
+    things: "Windows"
 ---
-thing: 
+thing:
+    - "lamp"
     - "light"
     - "lighting"
 meta:
     iot:facet: ":lighting.light" 
+header:
+    thing: "Light"
+    things: "Lights"
 ---
-thing: 
+thing:
     - "bluray"
     - "bluray player"
 meta:
     iot:facet: ":media.player.blu-ray" 
+header:
+    thing: "BluRay"
+    things: "BluRays"
 ---
-thing: 
+thing:
     - "cd"
     - "cd player"
 meta:
     iot:facet: ":media.player.cd" 
+header:
+    thing: "CD Player"
+    things: "CD Players"
 ---
-thing: 
+thing:
     - "dvd"
     - "dvd player"
 meta:
     iot:facet: ":media.player.dvd" 
+header:
+    thing: "DVD Player"
+    things: "DVD Players"
 ---
 thing: "turntable"
 meta:
     iot:facet: ":media.player.turntable" 
+header:
+    thing: "Turntable"
+    things: "Turntables"
 ---
 thing: "radio"
 meta:
     iot:facet: ":media.radio" 
+header:
+    thing: "Radio"
+    things: "Radios"
 ---
 thing: "am radio"
 meta:
     iot:facet: ":media.radio.am" 
+header:
+    thing: "AM Radio"
+    things: "AM Radios"
 ---
 thing: "fm radio"
 meta:
     iot:facet: ":media.radio.fm" 
+header:
+    thing: "FM Radio"
+    things: "FM Radios"
 ---
 thing: "internet radio"
 meta:
     iot:facet: ":media.radio.internet" 
+header:
+    thing: "Internet Radio"
+    things: "Internet Radios"
 ---
-thing: 
+thing:
     - "receiver"
     - "stereo"
 meta:
     iot:facet: ":media.receiver" 
+header:
+    thing: "Stereo"
+    things: "Stereos"
 ---
-thing: 
+thing:
     - "tv"
     - "television"
 header:
@@ -115,3 +176,6 @@ meta:
 thing: "alarm"
 meta:
     iot:facet: ":security.alarm" 
+header:
+    thing: "Alarm"
+    things: "Alarms"
