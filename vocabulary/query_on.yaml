@@ -4,9 +4,17 @@ response: "{{ name }} is {{ value|binary('off', 'on') }}"
 match:
     iot:purpose: ":on"
     value: true
+header:
+    zero: "{{ doer }} found no {{ things }} on"
+    one: "{{ doer }} found {{ count }} {{ thing }} on"
+    reponse: "{{ doer }} found {{ count }} {{ things }} on"
 ---
 query: "off"
 response: "{{ name }} is {{ value|binary('off', 'on') }}"
 match:
     iot:purpose: ":on"
     value: false
+header:
+    zero: "{{ doer }} found no {{ things }} off"
+    one: "{{ doer }} found {{ count }} {{ thing }} off"
+    reponse: "{{ doer }} found {{ count }} {{ things }} off"
