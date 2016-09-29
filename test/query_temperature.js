@@ -43,6 +43,7 @@ describe("query_temperature", function() {
                 assert.deepEqual(helpers.select(matches, 'thing-basement-heater').response, 'the temperature is 20');
                 assert.deepEqual(helpers.select(matches, 'thing-main-thermometer').response, 'the temperature is 70');
                 assert.deepEqual(helpers.select(matches, 'thing-master-ac').response, 'the temperature is 16');
+                assert.strictEqual(helpers.response(matches), "found 3 things");
 
                 done();
             }
