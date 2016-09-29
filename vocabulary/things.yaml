@@ -106,6 +106,9 @@ meta:
 thing: 
     - "tv"
     - "television"
+header:
+    thing: TV
+    things: TVs
 meta:
     iot:facet: ":media.tv" 
 ---
