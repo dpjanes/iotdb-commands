@@ -1,8 +1,0 @@
----
-thing: "switch"
-meta:
-    iot:facet: ":power.switch"
----
-thing: "switch"
-meta:
-    schema:name: "Switch"

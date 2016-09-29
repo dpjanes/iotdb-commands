@@ -179,3 +179,10 @@ meta:
 header:
     thing: "Alarm"
     things: "Alarms"
+---
+thing: "switch"
+meta:
+    iot:facet: ":power.switch"
+header:
+    thing: "Switch"
+    things: "Switches"
