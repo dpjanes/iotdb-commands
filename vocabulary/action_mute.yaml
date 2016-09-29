@@ -4,9 +4,9 @@ do:
     iot:purpose: ":mute"
     value: true
 header:
-    zero: "nothing to mute"
-    one: "muting one {{ thing }}"
-    response: "muting {{ count }} {{ things }}"
+    zero: "{{ doer }} found nothing to mute"
+    one: "{{ doer_is }} muting {{ count }} {{ thing }}"
+    response: "{{ doer_is }} muting {{ count }} {{ things }}"
 ---
 action: "mute"
 do:
@@ -17,9 +17,9 @@ do:
     iot:purpose: ":mute"
     value: false
 header:
-    zero: "nothing to unmute"
-    one: "unmuting one {{ thing }}"
-    response: "unmuting {{ count }} {{ things }}"
+    zero: "{{ doer_is }} nothing to unmute"
+    one: "{{ doer_is }} unmuting {{ count }} {{ thing }}"
+    response: "{{ doer_is }} unmuting {{ count }} {{ things }}"
 ---
 action: "unmute"
 do:

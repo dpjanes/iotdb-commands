@@ -7,9 +7,9 @@ do:
     rule: "delta-percent"
     value: +20
 header:
-    zero: "nothing to turn up"
-    one: "turning up one {{ thing }}"
-    response: "turning up {{ count }} {{ things }}"
+    zero: "{{ doer }} found nothing to turn up"
+    one: "{{ doer_is }} turning up {{ count }} {{ thing }}"
+    response: "{{ doer_is }} turning up {{ count }} {{ things }}"
 ---
 action: "turn down"
 meta:
@@ -19,9 +19,9 @@ do:
     rule: "delta-percent"
     value: -20
 header:
-    zero: "nothing to turn down"
-    one: "turning down one {{ thing }}"
-    response: "turning down {{ count }} {{ things }}"
+    zero: "{{ doer }} found nothing to turn down"
+    one: "{{ doer_is }} turning down {{ count }} {{ thing }}"
+    response: "{{ doer_is }} turning down {{ count }} {{ things }}"
 ---
 action: "turn up"
 meta:

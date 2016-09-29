@@ -4,9 +4,9 @@ do:
     iot:purpose: ":lock"
     value: true
 header:
-    zero: "nothing to lock"
-    one: "locking one {{ thing }}"
-    response: "locking {{ count }} {{ things }}"
+    zero: "{{ doer }} found nothing to lock"
+    one: "{{ doer_is }} locking {{ count }} {{ thing }}"
+    response: "{{ doer_is }} locking {{ count }} {{ things }}"
 ---
 action: "lock"
 do:
@@ -17,9 +17,9 @@ do:
     iot:purpose: ":lock"
     value: false
 header:
-    zero: "nothing to unlock"
-    one: "unlocking one {{ thing }}"
-    response: "unlocking {{ count }} {{ things }}"
+    zero: "{{ doer }} found nothing to unlock"
+    one: "{{ doer_is }} unlocking {{ count }} {{ thing }}"
+    response: "{{ doer_is }} unlocking {{ count }} {{ things }}"
 ---
 action: "unlock"
 do:

@@ -18,5 +18,5 @@ argument:
 do:
     iot:purpose: ":color"
 header:
-    one: "changing color to {{ argument }} for {{ count }} {{ thing }}"
-    response: "changing color to {{ argument }} for {{ count }} {{ things }}"
+    one: "{{ doer_is }} changing color to {{ argument }} for {{ count }} {{ thing }}"
+    response: "{{ doer_is }} changing color to {{ argument }} for {{ count }} {{ things }}"

@@ -5,8 +5,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.hdmi"
 header:
-    one: "switched {{ count }} {{ thing }} to HDMI"
-    response: "switched {{ count }} {{ things }} to HDMI"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to HDMI"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to HDMI"
 ---
 action: "switch to"
 argument: "hdmi 1"
@@ -14,8 +14,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.hdmi"
 header:
-    one: "switched {{ count }} {{ thing }} to HDMI 1"
-    response: "switched {{ count }} {{ things }} to HDMI 1"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to HDMI 1"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to HDMI 1"
 ---
 action: "switch to"
 argument: "hdmi 2"
@@ -23,8 +23,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.hdmi.2"
 header:
-    one: "switched {{ count }} {{ thing }} to HDMI 2"
-    response: "switched {{ count }} {{ things }} to HDMI 2"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to HDMI 2"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to HDMI 2"
 ---
 action: "switch to"
 argument: "hdmi 3"
@@ -32,8 +32,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.hdmi.3"
 header:
-    one: "switched {{ count }} {{ thing }} to HDMI 3"
-    response: "switched {{ count }} {{ things }} to HDMI 3"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to HDMI 3"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to HDMI 3"
 ---
 action: "switch to"
 argument: "tv"
@@ -41,8 +41,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.tv"
 header:
-    one: "switched {{ count }} {{ thing }} to TV"
-    response: "switched {{ count }} {{ things }} to TV"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to TV"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to TV"
 ---
 action: "switch to"
 argument: "apple tv"
@@ -50,8 +50,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.apple tv"
 header:
-    one: "switched {{ count }} {{ thing }} to Apple TV"
-    response: "switched {{ count }} {{ things }} to Apple TV"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to Apple TV"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to Apple TV"
 ---
 action: "switch to"
 argument: "am"
@@ -59,8 +59,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.am"
 header:
-    one: "switched {{ count }} {{ thing }} to AM"
-    response: "switched {{ count }} {{ things }} to AM"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to AM"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to AM"
 ---
 action: "switch to"
 argument: "fm"
@@ -68,8 +68,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.fm"
 header:
-    one: "switched {{ count }} {{ thing }} to FM"
-    response: "switched {{ count }} {{ things }} to FM"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to FM"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to FM"
 ---
 action: "switch to"
 argument: "netflix"
@@ -77,8 +77,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.service.netflix"
 header:
-    one: "switched {{ count }} {{ thing }} to NetFlix"
-    response: "switched {{ count }} {{ things }} to NetFlix"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to NetFlix"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to NetFlix"
 ---
 action: "switch to"
 argument: "spotify"
@@ -86,8 +86,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.service.spotify"
 header:
-    one: "switched {{ count }} {{ thing }} to Spotify"
-    response: "switched {{ count }} {{ things }} to Spotify"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to Spotify"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to Spotify"
 ---
 action: "switch to"
 argument: "pandora"
@@ -95,8 +95,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.service.pandora"
 header:
-    one: "switched {{ count }} {{ thing }} to Pandora"
-    response: "switched {{ count }} {{ things }} to Pandora"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to Pandora"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to Pandora"
 ---
 action: "switch to"
 argument: "youtube"
@@ -104,8 +104,8 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.service.youtube"
 header:
-    one: "switched {{ count }} {{ thing }} to YouTube"
-    response: "switched {{ count }} {{ things }} to YouTube"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to YouTube"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to YouTube"
 ---
 action: "switch to"
 argument: "crackle"
@@ -113,5 +113,5 @@ do:
     iot:purpose: ":band"
     value: "iot-purpose:band.service.crackle"
 header:
-    one: "switched {{ count }} {{ thing }} to Crackle"
-    response: "switched {{ count }} {{ things }} to Crackle"
+    one: "{{ doer_is }} switching {{ count }} {{ thing }} to Crackle"
+    response: "{{ doer_is }} switching {{ count }} {{ things }} to Crackle"

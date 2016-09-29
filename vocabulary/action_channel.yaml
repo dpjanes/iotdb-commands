@@ -7,5 +7,5 @@ argument: "*"
 do:
     iot:purpose: ":channel"
 header:
-    one: "changing channel to {{ argument }} for {{ count }} {{ thing }}"
-    response: "changing channel to {{ argument }} for {{ count }} {{ things }}"
+    one: "{{ doer_is }} changing channel to {{ argument }} for {{ count }} {{ thing }}"
+    response: "{{ doer_is }} changing channel to {{ argument }} for {{ count }} {{ things }}"
