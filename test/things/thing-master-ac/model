@@ -5,8 +5,9 @@
             "@id": "#t",
             "iot:purpose": "iot-purpose:temperature",
             "iot:read": true,
+            "iot:write": true,
             "iot:sensor": true,
-            "iot:actuator": false,
+            "iot:actuator": true,
             "iot:type": "iot:type.number",
             "iot:unit": "iot-unit:temperature.si.celsius"
         }

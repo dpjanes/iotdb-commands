@@ -15,8 +15,8 @@
             "iot:purpose": "iot-purpose:temperature",
             "iot:read": true,
             "iot:write": true,
-            "iot:sensor": true,
-            "iot:actuator": false,
+            "iot:sensor": false,
+            "iot:actuator": true,
             "iot:type": "iot:type.number",
             "iot:unit": "iot-unit:temperature.si.celsius"
         }

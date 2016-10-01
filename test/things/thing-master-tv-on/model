@@ -6,30 +6,30 @@
             "iot:purpose": "iot-purpose:on.true",
             "iot:instantaneous": true,
             "iot:type": "iot:type.null",
-            "iot:read": true,
+            "iot:read": false,
             "iot:write": true,
             "iot:sensor": false,
-            "iot:actuator": false
+            "iot:actuator": true
         },
         {
             "@id": "#volume-up",
             "iot:purpose": "iot-purpose:volume.up",
             "iot:instantaneous": true,
             "iot:type": "iot:type.null",
-            "iot:read": true,
+            "iot:read": false,
             "iot:write": true,
             "iot:sensor": false,
-            "iot:actuator": false
+            "iot:actuator": true
         },
         {
             "@id": "#mute",
             "iot:purpose": "iot-purpose:mute.true",
             "iot:instantaneous": true,
             "iot:type": "iot:type.null",
-            "iot:read": true,
+            "iot:read": false,
             "iot:write": true,
             "iot:sensor": false,
-            "iot:actuator": false
+            "iot:actuator": true
         },
         {
           "@id": "#band",

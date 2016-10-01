@@ -44,7 +44,47 @@ describe("query_on", function() {
 
                     assert.deepEqual(helpers.select(matches, 'thing-main-radio').response, 'Radio is on');
                     assert.deepEqual(helpers.select(matches, 'thing-master-lighting').response, 'Lights is on');
-                    assert.strictEqual(helpers.response(matches), "HomeStar found 2 things");
+                    assert.strictEqual(helpers.response(matches), "HomeStar found 2 things on");
+
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+        it("thing:coffee maker", function(done) {
+            const thing = "coffee maker";
+
+            helpers.run({
+                query: query,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    // console.log(error);
+                    assert.ok(!error, error);
+
+                    assert.strictEqual(helpers.response(matches), "HomeStar found no things");
+
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+
+        it("thing:time machine", function(done) {
+            const thing = "time machine";
+
+            helpers.run({
+                query: query,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+
+                    assert.strictEqual(helpers.response(matches), "HomeStar didn't find this type of thing");
 
                     done();
                 }
@@ -69,7 +109,26 @@ describe("query_on", function() {
                     assert.ok(!error, "no error expected");
 
                     assert.deepEqual(helpers.select(matches, 'thing-main-tv').response, 'TV is off');
-                    assert.strictEqual(helpers.response(matches), "HomeStar found 1 thing");
+                    assert.strictEqual(helpers.response(matches), "HomeStar found 1 thing off");
+
+                    done();
+                }
+                catch (x) {
+                    done(x);
+                }
+            });
+        });
+        it("thing:dishwasher", function(done) {
+            const thing = "dishwasher";
+
+            helpers.run({
+                query: query,
+                thing: thing,
+            }, (error, matches) => {
+                try {
+                    assert.ok(!error, "no error expected");
+
+                    // assert.strictEqual(helpers.response(matches), "HomeStar didn't find this thing");
 
                     done();
                 }

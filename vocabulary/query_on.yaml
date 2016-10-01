@@ -7,7 +7,7 @@ match:
 header:
     zero: "{{ doer }} found no {{ things }} on"
     one: "{{ doer }} found {{ count }} {{ thing }} on"
-    reponse: "{{ doer }} found {{ count }} {{ things }} on"
+    response: "{{ doer }} found {{ count }} {{ things }} on"
 ---
 query: "off"
 response: "{{ name }} is {{ value|binary('off', 'on') }}"
@@ -17,4 +17,4 @@ match:
 header:
     zero: "{{ doer }} found no {{ things }} off"
     one: "{{ doer }} found {{ count }} {{ thing }} off"
-    reponse: "{{ doer }} found {{ count }} {{ things }} off"
+    response: "{{ doer }} found {{ count }} {{ things }} off"

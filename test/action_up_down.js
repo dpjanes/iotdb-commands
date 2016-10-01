@@ -40,19 +40,13 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(helpers.updates(matches).length, 7);
-                    assert.strictEqual(helpers.response(matches), "HomeStar is turning up 7 things");
+                    assert.strictEqual(helpers.updates(matches).length, 6);
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning up 6 things");
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
-                        const r_value = r_thing.value.temperature;
-                        const x_value = 20.5;
-                        assert.deepEqual(r_value, x_value);
-                    }
-                    {
-                        const r_thing = helpers.select(matches, 'thing-main-thermometer');
-                        const r_value = r_thing.value.tem;
-                        const x_value = 71;
+                        const r_value = r_thing.value['set-point'];
+                        const x_value = 21.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
@@ -128,19 +122,13 @@ describe("action_up_down", function() {
             }, (error, matches) => {
                 try {
                     assert.ok(!error, "no error expected");
-                    assert.strictEqual(helpers.updates(matches).length, 7);
-                    assert.strictEqual(helpers.response(matches), "HomeStar is turning down 7 things");
+                    assert.strictEqual(helpers.updates(matches).length, 6);
+                    assert.strictEqual(helpers.response(matches), "HomeStar is turning down 6 things");
 
                     {
                         const r_thing = helpers.select(matches, 'thing-basement-heater');
-                        const r_value = r_thing.value.temperature;
-                        const x_value = 19.5;
-                        assert.deepEqual(r_value, x_value);
-                    }
-                    {
-                        const r_thing = helpers.select(matches, 'thing-main-thermometer');
-                        const r_value = r_thing.value.tem;
-                        const x_value = 69;
+                        const r_value = r_thing.value['set-point'];
+                        const x_value = 20.5;
                         assert.deepEqual(r_value, x_value);
                     }
                     {
