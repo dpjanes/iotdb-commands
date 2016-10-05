@@ -25,9 +25,8 @@
 const iotdb = require('iotdb');
 const _ = iotdb._;
 
+const iotdb_transport = require("iotdb-transport");
 const iotdb_commands = require('..');
-
-const configuration = require("homestar-persist").configuration;
 
 exports.command = "command";
 exports.summary = "send a command - test human speech-like stuff";
@@ -74,13 +73,12 @@ exports.run = ad => {
         return _die("error: --action or --query are required");
     }
 
-    const cfgd = _.first(configuration());
-    const transporter = require(cfgd.transporter).make(cfgd.initd);
+    const persist_transporter = iotdb_transport.create("persist");
 
     iotdb_commands.match({
         user: null,
         verbose: true,
-        transporter: transporter,
+        transporter: persist_transporter,
 
         action: ad.action || null,
         thing: ad.thing || null,
@@ -94,7 +92,7 @@ exports.run = ad => {
 
         matches
             .forEach(matchd => {
-                iotdb_commands.execute(transporter, matchd, error => {
+                iotdb_commands.execute(persist_transporter, matchd, error => {
                     if (error) {
                         console.log("#", _.error.message(error));
                         return;
